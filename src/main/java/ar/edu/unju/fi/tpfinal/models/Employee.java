@@ -1,13 +1,32 @@
 package ar.edu.unju.fi.tpfinal.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name="EMPLOYEES")
+@Component
 public class Employee {
+	@Id
+	@Column
 	private int employeeNumbre;
+	@Column
 	private String lastName;
+	@Column
 	private String firstName;
+	@Column
 	private String extension;
+	@Column
 	private String email;
+	@Column
 	private Office office;
+	@Column
 	private Employee employee;
+	@Column
 	private String jobTitle;
 	
 	public Employee() {

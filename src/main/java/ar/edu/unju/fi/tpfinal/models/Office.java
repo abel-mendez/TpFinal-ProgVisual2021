@@ -1,14 +1,34 @@
 package ar.edu.unju.fi.tpfinal.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name="OFFICES")
+@Component
 public class Office {
+	@Id
+	@Column
 	private String officeCode;
+	@Column
 	private String city;
+	@Column
 	private String phone;
+	@Column
 	private String addressLine1;
+	@Column
 	private String addressLine2;
+	@Column
 	private String state;
+	@Column
 	private String country;
+	@Column
 	private String postalCode;
+	@Column
 	private String territory;
 	
 	public Office() {
