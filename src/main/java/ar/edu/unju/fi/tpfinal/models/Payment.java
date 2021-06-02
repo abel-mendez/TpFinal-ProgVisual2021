@@ -2,24 +2,39 @@ package ar.edu.unju.fi.tpfinal.models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+@Entity
+@Table(name="PAYMENTS")
+@Component
 public class Payment {
-	private Customer customer;
+	@Column
+	private String customer;
+	@Id
+	@Column
 	private String checkNumber;
+	@Column
 	private Date paymentDate;
+	@Column
 	private Double amount;
+	
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @return the customer
 	 */
-	public Customer getCustomer() {
+	public String getCustomer() {
 		return customer;
 	}
 	/**
 	 * @param customer the customer to set
 	 */
-	public void setCustomer(Customer customer) {
+	public void setCustomer(String customer) {
 		this.customer = customer;
 	}
 	/**
@@ -64,7 +79,7 @@ public class Payment {
 	 * @param paymentDate
 	 * @param amount
 	 */
-	public Payment(Customer customer, String checkNumber, Date paymentDate, Double amount) {
+	public Payment(String customer, String checkNumber, Date paymentDate, Double amount) {
 		super();
 		this.customer = customer;
 		this.checkNumber = checkNumber;
