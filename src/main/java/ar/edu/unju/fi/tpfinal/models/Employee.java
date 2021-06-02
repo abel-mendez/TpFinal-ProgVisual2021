@@ -2,9 +2,13 @@ package ar.edu.unju.fi.tpfinal.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -22,9 +26,15 @@ public class Employee {
 	private String extension;
 	@Column
 	private String email;
-	@Column
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Autowired
+	@JoinColumn(name="officeCode")
 	private Office office;
-	@Column
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Autowired
+	@JoinColumn(name="reportsTo")
 	private Employee employee;
 	@Column
 	private String jobTitle;
