@@ -1,19 +1,56 @@
 package ar.edu.unju.fi.tpfinal.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name="CUSTOMERS")
+@Component("oneCustomer")
 public class Customers {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private int customerNumber;
+	@Column
 	private String customerName;
+	@Column
 	private String contactLastName;
+	@Column
 	private String contactFirstName;
+	@Column
 	private int phone;
+	@Column
 	private String addresLine1;
+	@Column
 	private String addresLine2;
+	@Column
 	private String city;
+	@Column
 	private String state;
+	@Column
 	private int postalCode;
+	@Column
 	private String country;
+	@Column
 	private int salesRepEmployeeNumber;
+	@Column
 	private Double creditLimit;
+	
+	@Autowired
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="employeeNumber")
+	private Employee employee;
+	
 	public Customers() {
 		// TODO Auto-generated constructor stub
 	}
@@ -206,6 +243,22 @@ public class Customers {
 	public void setCreditLimit(Double creditLimit) {
 		this.creditLimit = creditLimit;
 	}
+	
+	
+	
+	/**
+	 * @return the employee
+	 */
+	public Employee getEmployee() {
+		return employee;
+	}
+	/**
+	 * @param employee the employee to set
+	 */
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 	@Override
 	public String toString() {
 		return "Customers [customerNumber=" + customerNumber + ", customerName=" + customerName + ", contactLastName="
