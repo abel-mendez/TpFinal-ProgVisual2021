@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.tpfinal.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,11 @@ public class Customers {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="employeeNumber")
 	private Employee employee;
+	
+	@Autowired
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="customer")
+	private Payment payment; 
 	
 	public Customers() {
 		// TODO Auto-generated constructor stub
@@ -259,6 +266,20 @@ public class Customers {
 		this.employee = employee;
 	}
 	
+	
+	
+	/**
+	 * @return the payment
+	 */
+	public Payment getPayment() {
+		return payment;
+	}
+	/**
+	 * @param payment the payment to set
+	 */
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
 	@Override
 	public String toString() {
 		return "Customers [customerNumber=" + customerNumber + ", customerName=" + customerName + ", contactLastName="
