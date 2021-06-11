@@ -1,14 +1,33 @@
 package ar.edu.unju.fi.tpfinal.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
 /**
  * @author Diego
  *
  */
+@Entity
+@Table(name="ORDERDETAILS")
+//@IdClass(value = Product.class)
+@Component
 public class OrderDetail {
+	
+	@Column
 	private Integer orderNumber;
+	@Id
+	@Column
 	private String productCode;
+	@Column
 	private int quantityOrdered;
+	@Column
 	private double princeEach;
+	@Column
 	private byte orderLineNumber;
 //CONSTRUCTORES
 	/**
@@ -71,5 +90,7 @@ public class OrderDetail {
 		return "OrderDetail [orderNumber=" + orderNumber + ", productCode=" + productCode + ", quantityOrdered="
 				+ quantityOrdered + ", princeEach=" + princeEach + ", orderLineNumber=" + orderLineNumber + "]";
 	}
+	
+	
 	
 }

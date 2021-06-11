@@ -1,13 +1,28 @@
 package ar.edu.unju.fi.tpfinal.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
 /**
  * @author Diego
  *
  */
+@Entity
+@Table(name="PRODUCTLINES")
+@Component
 public class ProductLine {
+	@Id
+	@Column(name = "productline")
 	private String productline;
+	@Column
 	private String textDescription;
+	@Column
 	private String htmlDescription;
+	@Column
 	private byte image;
 //CONSTRUCTORES
 	/**
