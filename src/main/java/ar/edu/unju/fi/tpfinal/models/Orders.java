@@ -2,14 +2,45 @@ package ar.edu.unju.fi.tpfinal.models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name= "ORDERS")
+@Component("oneOrder")
 public class Orders {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private int orderNumber;
+	@Column
 	private Date orderDate;
+	@Column
 	private Date requiredDate;
+	@Column
 	private Date shippedDate;
+	@Column
 	private String status;
+	@Column
 	private String comments;
+	@Column
 	private int customerNumber;
+	
+	@Autowired
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="customerNumber")
+	private Customers customers;
+	
 	public Orders() {
 		// TODO Auto-generated constructor stub
 	}
@@ -96,6 +127,21 @@ public class Orders {
 	 */
 	public void setCustomerNumber(int customerNumber) {
 		this.customerNumber = customerNumber;
+	}
+	
+	
+	
+	/**
+	 * @return the customers
+	 */
+	public Customers getCustomers() {
+		return customers;
+	}
+	/**
+	 * @param customers the customers to set
+	 */
+	public void setCustomers(Customers customers) {
+		this.customers = customers;
 	}
 	/**
 	 * @param orderNumber
