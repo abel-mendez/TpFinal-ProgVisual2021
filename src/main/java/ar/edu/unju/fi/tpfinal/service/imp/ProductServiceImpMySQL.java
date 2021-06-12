@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.Product;
 import ar.edu.unju.fi.tpfinal.reposiroty.IProductRepository;
@@ -13,6 +14,7 @@ import ar.edu.unju.fi.tpfinal.service.IProductService;
  * @author Diego
  *
  */
+@Service
 public class ProductServiceImpMySQL implements IProductService {
 
 	@Autowired
