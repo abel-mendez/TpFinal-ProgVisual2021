@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	    <link rel="stylesheet" th:href="@{/css/main.css}" />
+	    <link
+	      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	      rel="stylesheet"
+	      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	      crossorigin="anonymous"/>
+		<title>Employee</title>
+	</head>
+	<body class="body">
+		<header th:replace="/layout/header-office :: header-office"></header>
+		
+		<main class="w-75 m-auto mt-3 mb-3 main text-center row">
+      <h3 class="text-white text-decoration-underline">New Employee</h3> <hr>
+      <div class="cont-form">
+        <h4 class="text-white text-decoration-underline mb-4">Employee Data</h4>
+        <form th:action="@{/employee/save}" th:object="${employee}" method="post" class="row g-3">
+      		<div class="col-md-4">
+            	<label for="employeeNumbre" class="form-label">Employee Number</label>
+            	<input th:field="*{employeeNumbre}" type="number" class="form-control" id="employeeNumbre" />
+          	</div>
+          	<div class="col-md-4">
+            	<label for="lastName" class="form-label">Last Name</label>
+            	<input th:field="*{lastName}" type="text" class="form-control" id="lastName" />
+          	</div>
+          	<div class="col-md-4">
+            	<label for="firstName" class="form-label">First Name</label>
+            	<input th:field="*{firstName}" type="text" class="form-control" id="firstName" />
+          	</div>
+          	<div class="col-md-4">
+           		<label for="extension" class="form-label">Extension</label>
+            	<input th:field="*{extension}" type="text" class="form-control" id="extension" />
+          	</div>
+          	<div class="col-8">
+            	<label for="email" class="form-label">Email</label>
+            	<input th:field="*{email}"
+              	type="email" class="form-control"
+              	id="email" placeholder="ejusuario@gmail.com"
+            />
+          </div>
+          <!-- Select Office -->
+          <div class="col-md-5">
+            <label for="office" class="form-label">Office Code</label>
+            <select name="office" id="office" class="form-select" aria-label="Default select example">
+				<option th:each="o: ${office}" th:value="${o.officeCode}" ><span th:text="${o.city}" ></span></option>
+								  
+			</select>
+          </div>
+          <!-- Select Report -->
+          <div class="col-md-5">
+            <label for="employee" class="form-label">Report to</label>
+          	 
+          	 <select name="employe" id="employe" class="form-select" aria-label="Default select example">
+				<option th:each="e: ${employe}" th:value="${e.employeeNumbre}" ><span th:text="${e.lastName} + ${e.firstName}"></option>
+								  
+			</select>
+          </div>
+          
+          
+          <div class="col-md-2">
+            <label for="jobTitle" class="form-label">Job Title</label>
+            <input th:field="*{jobTitle}" type="text" class="form-control" id="jobTitle" />
+          </div>
+          
+          <br>
+          <hr>
+          <br>
+          <!-- Form Us -->
+          <div class="cont-form col-md-8 offset-md-2">
+          	<h4 class="text-white text-decoration-underline mb-4">User Data</h4>
+          	<div class="col-md-6 offset-md-3" >
+            	<label for="id" class="form-label">Usuario ID</label>
+            	<input th:field="*{user.id}" type="text" class="form-control" id="id" />
+          	</div>
+          	<div class="col-md-6 offset-md-3">
+            	<label for="usuario" class="form-label">Usuario</label>
+            	<input th:field="*{user.usuario}" type="text" class="form-control" id="usuario" />
+          	</div>
+          	<div class="col-md-6 offset-md-3">
+            	<label for="password" class="form-label">Password</label>
+            	<input th:field="*{user.password}" type="text" class="form-control" id="password" />
+          	</div>
+          	<div class="col-md-6 offset-md-3" >
+            	<label for="tipo" class="form-label">Tipo</label>
+            	<select name="tipo" class="form-control "id="tipo" th:field="*{user.tipo}">
+					<option value="" selected >--Seleccione opcion--</option>
+					<option value="Jefe" style="text-align:justify;"> Jefe </option>
+					<option value="ADMINISTRADOR"> Administrador </option>
+					<option value="ENCARGADO"> Encargado</option>
+					<option value="EMPLEADO"> Empleado</option>
+				</select>
+          	</div>
+
+          </div>
+          
+          <div class="col-12">
+            <button type="submit" class="btn mt-2 btn-primary">
+              New Employee
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+	
+	</body>
+</html>
