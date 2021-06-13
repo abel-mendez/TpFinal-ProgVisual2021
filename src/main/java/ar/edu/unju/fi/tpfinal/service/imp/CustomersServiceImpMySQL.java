@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.Customers;
 import ar.edu.unju.fi.tpfinal.reposiroty.ICustomersRepository;
 import ar.edu.unju.fi.tpfinal.service.ICustomersService;
-
+@Service
 public class CustomersServiceImpMySQL implements ICustomersService {
 	
 	private List<Customers> customerss= new ArrayList<Customers>();
