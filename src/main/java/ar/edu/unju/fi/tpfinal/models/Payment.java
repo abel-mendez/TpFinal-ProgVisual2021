@@ -4,7 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -21,6 +23,10 @@ public class Payment {
 	private Date paymentDate;
 	@Column
 	private Double amount;
+	
+	
+	@OneToOne(mappedBy = "payment",fetch = FetchType.LAZY)
+	private Customers customers;
 	
 	public Payment() {
 		// TODO Auto-generated constructor stub
@@ -72,6 +78,21 @@ public class Payment {
 	 */
 	public void setAmount(Double amount) {
 		this.amount = amount;
+	}
+	
+	
+	
+	/**
+	 * @return the customers
+	 */
+	public Customers getCustomers() {
+		return customers;
+	}
+	/**
+	 * @param customers the customers to set
+	 */
+	public void setCustomers(Customers customers) {
+		this.customers = customers;
 	}
 	/**
 	 * @param customer

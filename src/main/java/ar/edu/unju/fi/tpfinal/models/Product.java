@@ -1,18 +1,46 @@
 package ar.edu.unju.fi.tpfinal.models;
 
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  * @author Diego
  *
  */
+@Entity
+@Table(name="PRODUCTS")
+@Component
 public class Product {
+	@Id
+	@Column
 	private String productCode;
+	@Column
 	private String productName;
-	private String productLine;
+	@Autowired
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name="productline")
+	private ProductLine productLine;
+	@Column
 	private String productScale;
+	@Column
 	private String productVendor;
+	@Column
 	private String productDescription;
+	@Column
 	private byte quantityInStock;
+	@Column
 	private double buyPrice;
+	@Column
 	private double msrp;
 	//CONSTRUCTORES
 	/**
@@ -35,7 +63,7 @@ public class Product {
 	 * @param buyPrice
 	 * @param msrp
 	 */
-	public Product(String productCode, String productName, String productLine, String productScale,
+	public Product(String productCode, String productName, ProductLine productLine, String productScale,
 			String productVendor, String productDescription, byte quantityInStock, double buyPrice, double msrp) {
 		super();
 		this.productCode = productCode;
@@ -61,10 +89,10 @@ public class Product {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductLine() {
+	public ProductLine getProductLine() {
 		return productLine;
 	}
-	public void setProductLine(String productLine) {
+	public void setProductLine(ProductLine productLine) {
 		this.productLine = productLine;
 	}
 	public String getProductScale() {
@@ -112,5 +140,25 @@ public class Product {
 				+ msrp + "]";
 	}
 	
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (!Objects.equals(this.productName, other.productName)) {
+            return false;
+        }
+        if (!Objects.equals(this.productCode, other.productCode)) {
+            return false;
+        }
+        return true;
+    }
 
 }
