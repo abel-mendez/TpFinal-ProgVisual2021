@@ -43,33 +43,34 @@ public class OfficeController {
 		LOGGER.info("CONTROLLER : OfficeController with / post method");
 		LOGGER.info("METHOD : guardarOfficePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");		
-		ModelAndView modelView = new ModelAndView("offices");
+		ModelAndView modelView = new ModelAndView("all-offices");
 		officeService.guardarOffice(oneOffice);
 		modelView.addObject("offices",officeService.getAllOffices());
 		return modelView;
 	}
 	
-	@GetMapping("/office/listado")
-	public ModelAndView getOfficesPage(@ModelAttribute("office")Office oneOffice) {
+	@GetMapping("/office/all")
+	//@ModelAttribute("office")Office oneOffice
+	public ModelAndView getOfficesPage() {
 		LOGGER.info("CONTROLLER : OfficeController with / office/listado get method");
 		LOGGER.info("METHOD : getOfficesPage()");		
-		ModelAndView modelView = new ModelAndView("offices");
+		ModelAndView modelView = new ModelAndView("all-offices");
 		modelView.addObject("offices",officeService.getAllOffices());
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");
 		return modelView;
 	}
 	
-	@GetMapping("/office/editar/{id}")
+	@GetMapping("/office/edit/{id}")
 	public ModelAndView editOfficePage(@PathVariable(value="id") String id) {
 		ModelAndView modelView = new ModelAndView("nuevo-office");
-		Optional<Office> office= Optional.ofNullable(officeService.getOfficeById(id));
-		modelView.addObject("offices", office);
+		Office office= officeService.getOfficeById(id);
+		modelView.addObject("office", office);
 		return modelView;
 	}
 	
-	@GetMapping("/office/eliminar/{id}")
+	@GetMapping("/office/delete/{id}")
 	public ModelAndView deleteOfficePage(@PathVariable(value="id") String id) { 
-		ModelAndView modelView = new ModelAndView("redirect:/office/listado");
+		ModelAndView modelView = new ModelAndView("redirect:/office/all");
 		officeService.deletOfficeById(id);
 		return modelView;
 	}

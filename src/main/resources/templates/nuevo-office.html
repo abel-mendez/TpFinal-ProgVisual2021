@@ -17,8 +17,8 @@
   <body class="body">
   <header th:replace="/layout/header-office :: header-office"></header>
 
-    <main class="w-75 m-auto mt-3 mb-3 main text-center row">
-      <h3 class="text-white text-decoration-underline">New Office</h3>
+    <main class="w-75 m-auto text-white mt-3 mb-3 main text-center row">
+      <h3 class="text-white text-decoration-underline mb-5">New Office</h3>
       <div class="cont-form">
         <h4 class="text-white text-decoration-underline mb-4">Office Data</h4>
         <form th:action="@{/office/save}" th:object="${office}" method="post" class="row g-3">
