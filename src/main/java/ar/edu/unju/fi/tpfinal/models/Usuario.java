@@ -3,6 +3,7 @@ package ar.edu.unju.fi.tpfinal.models;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Usuario {
 	@Id
+	@Column(name="us_Id")
 	private Long id;
 	@Column
 	private String usuario;
@@ -23,9 +25,9 @@ public class Usuario {
 	private String password;
 	@Column
 	private String tipo;
+	
 	@Autowired
-	@OneToOne
-	@JoinColumn(name="employeeNumbre")
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
 	private Employee empleado;
 //CONSTRUCTORES
 	/**

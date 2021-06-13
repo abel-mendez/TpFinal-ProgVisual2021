@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.tpfinal.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,11 @@ public class Employee {
 	private Employee employee;
 	@Column
 	private String jobTitle;
+	//USUARIO para login
+	@Autowired
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="us_Id")
+	private Usuario user;
 	
 	public Employee() {
 		// TODO Auto-generated constructor stub
@@ -179,6 +186,14 @@ public class Employee {
 		this.office = office;
 		this.employee = employee;
 		this.jobTitle = jobTitle;
+	}
+
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 	
 	
