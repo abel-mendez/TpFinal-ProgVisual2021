@@ -34,11 +34,11 @@ public class OfficeController {
 		LOGGER.info("CONTROLLER : OfficeController with / get method");
 		LOGGER.info("METHOD : nuevoOfficePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA nuevo-office.html");
-		model.addAttribute(officeService.getOffice());
+		model.addAttribute("office",officeService.getOffice());
 		return "nuevo-office";
 	}
 	
-	@PostMapping("/office/guardar")
+	@PostMapping("/office/save")
 	public ModelAndView guardarOfficePage(@ModelAttribute("office") Office oneOffice) {
 		LOGGER.info("CONTROLLER : OfficeController with / post method");
 		LOGGER.info("METHOD : guardarOfficePage()");

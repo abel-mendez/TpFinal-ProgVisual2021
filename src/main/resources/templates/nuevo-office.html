@@ -21,54 +21,57 @@
       <h3 class="text-white text-decoration-underline">New Office</h3>
       <div class="cont-form">
         <h4 class="text-white text-decoration-underline mb-4">Office Data</h4>
-        <form class="row g-3">
-          <div class="col-md-4">
-            <label for="inputEmail4" class="form-label">Country</label>
-            <input type="email" class="form-control" id="inputEmail4" />
+        <form th:action="@{/office/save}" th:object="${office}" method="post" class="row g-3">
+        <div class="col-md-3">
+            <label for="officeCode" class="form-label">Office Code</label>
+            <input th:field="*{officeCode}" type="text" class="form-control" id="officeCoe" />
           </div>
-          <div class="col-md-4">
-            <label for="inputZip" class="form-label">Territory</label>
-            <input type="text" class="form-control" id="inputZip" />
+          <div class="col-md-3">
+            <label for="country" class="form-label">Country</label>
+            <input th:field="*{country}" type="text" class="form-control" id="country" />
           </div>
-          <div class="col-md-4">
-            <label for="inputPassword4" class="form-label">Phone</label>
-            <input type="password" class="form-control" id="inputPassword4" />
+          <div class="col-md-3">
+            <label for="territory" class="form-label">Territory</label>
+            <input th:field="*{territory}" type="text" class="form-control" id="territory" />
+          </div>
+          <div class="col-md-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input th:field="*{phone}" type="text" class="form-control" id="phone" />
           </div>
           <div class="col-12">
-            <label for="inputAddress" class="form-label">Address Line 1</label>
+            <label for="addressLine1" class="form-label">Address Line 1</label>
             <input
+            th:field="*{addressLine1}"
               type="text"
               class="form-control"
-              id="inputAddress"
+              id="addressLine1"
               placeholder="1234 Main St"
             />
           </div>
           <div class="col-12">
-            <label for="inputAddress2" class="form-label">Address Line 2</label>
+            <label for="addressLine2" class="form-label">Address Line 2</label>
             <input
+            th:field="*{addressLine2}"
               type="text"
               class="form-control"
-              id="inputAddress2"
+              id="addressLine2"
               placeholder="Apartment, studio, or floor"
             />
           </div>
           <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity" />
+            <label for="city" class="form-label">City</label>
+            <input th:field="*{city}" type="text" class="form-control" id="city" />
           </div>
           <div class="col-md-4">
-            <label for="inputState" class="form-label">State</label>
-            <select id="inputState" class="form-select">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
+            <label for="state" class="form-label">State</label>
+          	 <input th:field="*{state}" type="text" class="form-control" id="state" />
           </div>
           <div class="col-md-2">
-            <label for="inputZip" class="form-label">Postal Code</label>
-            <input type="text" class="form-control" id="inputZip" />
+            <label for="postalCode" class="form-label">Postal Code</label>
+            <input th:field="*{postalCode}" type="text" class="form-control" id="postalCode" />
           </div>
           <div class="col-12">
-            <button type="button" class="btn mt-2 btn-primary">
+            <button type="submit" class="btn mt-2 btn-primary">
               New Office
             </button>
           </div>
