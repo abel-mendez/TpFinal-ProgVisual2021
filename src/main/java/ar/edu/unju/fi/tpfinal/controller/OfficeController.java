@@ -29,7 +29,7 @@ public class OfficeController {
 		return "index";
 	}
 	
-	@GetMapping("/office/nuevo")
+	@GetMapping("/office/new")
 	public String nuevoOfficePage(Model model) {
 		LOGGER.info("CONTROLLER : OfficeController with / get method");
 		LOGGER.info("METHOD : nuevoOfficePage()");
