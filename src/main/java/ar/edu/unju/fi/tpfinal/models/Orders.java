@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,7 @@ public class Orders {
 	private int customerNumber;
 	
 	@Autowired
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="customerNumber")
+	@ManyToOne
 	private Customers customers;
 	
 	public Orders() {

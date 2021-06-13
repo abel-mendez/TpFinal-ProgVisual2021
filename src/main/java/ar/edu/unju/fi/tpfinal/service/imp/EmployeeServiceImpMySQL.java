@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.Employee;
 import ar.edu.unju.fi.tpfinal.reposiroty.IEmployeRepository;
 import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 
-
+@Service
 public class EmployeeServiceImpMySQL implements IEmployeeService {
 
 	private List<Employee> employees=new ArrayList<Employee>();

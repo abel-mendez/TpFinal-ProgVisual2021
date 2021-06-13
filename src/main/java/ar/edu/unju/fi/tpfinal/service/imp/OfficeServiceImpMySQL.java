@@ -3,11 +3,13 @@ package ar.edu.unju.fi.tpfinal.service.imp;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.Office;
 import ar.edu.unju.fi.tpfinal.reposiroty.IOfficeRepository;
 import ar.edu.unju.fi.tpfinal.service.IOfficeService;
 
+@Service
 public class OfficeServiceImpMySQL implements IOfficeService {
 	private List<Office> offices=new ArrayList<Office>();
 	@Autowired

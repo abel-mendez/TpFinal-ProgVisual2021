@@ -24,6 +24,11 @@ public class OfficeController {
 	
 	private static final Log LOGGER = LogFactory.getLog(OfficeController.class);
 	
+	@GetMapping("/")
+	public String getHome() {
+		return "index";
+	}
+	
 	@GetMapping("/office/nuevo")
 	public String nuevoOfficePage(Model model) {
 		LOGGER.info("CONTROLLER : OfficeController with / get method");
