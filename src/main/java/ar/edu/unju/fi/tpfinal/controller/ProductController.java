@@ -11,61 +11,60 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.tpfinal.models.Office;
+import ar.edu.unju.fi.tpfinal.models.Product;
 import ar.edu.unju.fi.tpfinal.models.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.IProductLineService;
-
+import ar.edu.unju.fi.tpfinal.service.IProductService;
 @Controller
-public class ProductLineController {
+public class ProductController {
+
 	@Autowired
-	private IProductLineService productLineService;
+	private IProductService productService;
 	private static final Log LOGGER=LogFactory.getLog(ProductLineController.class);
 	
-	@GetMapping("/product/productLine/new")
+	@GetMapping("/product/new")
 	public String nuevoProductLinePage(Model model) {
 		LOGGER.info("-CONTROLLER : ProductLineController with / get method");
 		LOGGER.info("-METHOD : nuevoProductLinePage()");
 		LOGGER.info("-RESULT : VISUALIZA LA PAGINA new-productLine.html");
-		model.addAttribute("productLine", productLineService.getNewProductLine());
-		return "new-productLine";
+		model.addAttribute("product", productService.getNewProduct());
+		return "new-product";
 	}
 	
 
-	@PostMapping("/product/productLine/save")
-	public ModelAndView guardarProductLine(@ModelAttribute("productLine") ProductLine productLine) {
+	@PostMapping("/product/save")
+	public ModelAndView guardarProductLine(@ModelAttribute("product") Product product) {
 		LOGGER.info("CONTROLLER : OfficeController with / post method");
 		LOGGER.info("METHOD : guardarOfficePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");		
-		ModelAndView modelView = new ModelAndView("all-productsLine");
-		productLineService.guardarProductLine(productLine);
-		modelView.addObject("productsLine",productLineService.getAllProductsLine());
+		ModelAndView modelView = new ModelAndView("all-products");
+		productService.guardarProduct(product);
+		modelView.addObject("products",productService.getAllProducts());
 		return modelView;
 	}
 	
-	@GetMapping("/product/productLine/all")
-	//@ModelAttribute("office")Office oneOffice
+	@GetMapping("/product/all")
 	public ModelAndView getProductsLinePage() {
 		LOGGER.info("CONTROLLER : OfficeController with / office/listado get method");
 		LOGGER.info("METHOD : getOfficesPage()");		
-		ModelAndView modelView = new ModelAndView("all-productsLine");
-		modelView.addObject("productsLine",productLineService.getAllProductsLine());
+		ModelAndView modelView = new ModelAndView("all-products");
+		modelView.addObject("productsLine",productService.getAllProducts());
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");
 		return modelView;
 	}
 	
-	@GetMapping("/product/productLine/edit/{id}")
+	@GetMapping("/product/edit/{id}")
 	public ModelAndView editOfficePage(@PathVariable(value="id") String id) {
-		ModelAndView modelView = new ModelAndView("nuevo-office");
-		ProductLine productLine= productLineService.getProductLineById(id);
-		modelView.addObject("productLine", productLine);
+		ModelAndView modelView = new ModelAndView("new-product");
+		Product product= productService.getProductById(id);
+		modelView.addObject("product", product);
 		return modelView;
 	}
 	
-	@GetMapping("/product/productLine/delete/{id}")
+	@GetMapping("/product/delete/{id}")
 	public ModelAndView deleteOfficePage(@PathVariable(value="id") String id) { 
-		ModelAndView modelView = new ModelAndView("redirect:/product/productLine/all");
-		productLineService.eliminarProductLine(id);
+		ModelAndView modelView = new ModelAndView("redirect:/product/all");
+		productService.eliminarProduct(id);
 		return modelView;
 	}
-
 }
