@@ -53,19 +53,19 @@ public class ProductLineController {
 		return modelView;
 	}
 	
-	/*@GetMapping("/office/edit/{id}")
+	@GetMapping("/product/productLine/edit/{id}")
 	public ModelAndView editOfficePage(@PathVariable(value="id") String id) {
 		ModelAndView modelView = new ModelAndView("nuevo-office");
-		Office office= officeService.getOfficeById(id);
-		modelView.addObject("office", office);
+		ProductLine productLine= productLineService.getProductLineById(id);
+		modelView.addObject("productLine", productLine);
 		return modelView;
 	}
 	
-	@GetMapping("/office/delete/{id}")
+	@GetMapping("/product/productLine/delete/{id}")
 	public ModelAndView deleteOfficePage(@PathVariable(value="id") String id) { 
 		ModelAndView modelView = new ModelAndView("redirect:/office/all");
-		officeService.deletOfficeById(id);
+		productLineService.eliminarProductLine(id);
 		return modelView;
-	}*/
+	}
 
 }
