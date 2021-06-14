@@ -3,6 +3,7 @@ package ar.edu.unju.fi.tpfinal.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -20,9 +21,10 @@ public class ProductLine {
 	private String productline;
 	@Column
 	private String textDescription;
-	@Column
+	@Column(columnDefinition = "MEDIUMTEXT")
 	private String htmlDescription;
-	@Column
+	@Lob
+	@Column(columnDefinition = "MEDIUMBLOB")
 	private byte image;
 //CONSTRUCTORES
 	/**
