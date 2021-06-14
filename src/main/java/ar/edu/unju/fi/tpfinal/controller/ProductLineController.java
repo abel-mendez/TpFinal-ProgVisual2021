@@ -6,7 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.tpfinal.models.Office;
+import ar.edu.unju.fi.tpfinal.models.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 
 @Controller
@@ -23,5 +29,43 @@ public class ProductLineController {
 		model.addAttribute("productLine", productLineService.getNewProductLine());
 		return "new-productLine";
 	}
+	
+
+	@PostMapping("/product/productLine/save")
+	public ModelAndView guardarProductLine(@ModelAttribute("productLine") ProductLine productLine) {
+		LOGGER.info("CONTROLLER : OfficeController with / post method");
+		LOGGER.info("METHOD : guardarOfficePage()");
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");		
+		ModelAndView modelView = new ModelAndView("all-productsLine");
+		productLineService.guardarProductLine(productLine);
+		modelView.addObject("productsLine",productLineService.getAllProductsLine());
+		return modelView;
+	}
+	
+	@GetMapping("/product/productLine/all")
+	//@ModelAttribute("office")Office oneOffice
+	public ModelAndView getProductsLinePage() {
+		LOGGER.info("CONTROLLER : OfficeController with / office/listado get method");
+		LOGGER.info("METHOD : getOfficesPage()");		
+		ModelAndView modelView = new ModelAndView("all-productsLine");
+		modelView.addObject("productsLine",productLineService.getAllProductsLine());
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");
+		return modelView;
+	}
+	
+	/*@GetMapping("/office/edit/{id}")
+	public ModelAndView editOfficePage(@PathVariable(value="id") String id) {
+		ModelAndView modelView = new ModelAndView("nuevo-office");
+		Office office= officeService.getOfficeById(id);
+		modelView.addObject("office", office);
+		return modelView;
+	}
+	
+	@GetMapping("/office/delete/{id}")
+	public ModelAndView deleteOfficePage(@PathVariable(value="id") String id) { 
+		ModelAndView modelView = new ModelAndView("redirect:/office/all");
+		officeService.deletOfficeById(id);
+		return modelView;
+	}*/
 
 }
