@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.tpfinal.models.Employee;
 import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 import ar.edu.unju.fi.tpfinal.service.IOfficeService;
 
@@ -29,6 +33,15 @@ public class EmployeeControlles {
 		model.addAttribute("employe", employeeService.getAllEmployees());
 		return "new-employee";
 		
+	}
+	
+	@PostMapping("/employee/new")
+	public ModelAndView saveEmployeePage(@ModelAttribute("employee") Employee oneEmployee) {
+		
+		ModelAndView modelView=new ModelAndView("employees");
+		employeeService.guardarEmployee(oneEmployee);
+		modelView.addObject("employees", employeeService.getAllEmployees());
+		return modelView;
 	}
 
 }
