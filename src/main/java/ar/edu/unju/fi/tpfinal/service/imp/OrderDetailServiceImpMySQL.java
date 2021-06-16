@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.OrderDetail;
+import ar.edu.unju.fi.tpfinal.models.OrderDetailId;
 import ar.edu.unju.fi.tpfinal.reposiroty.IOrderDetailRepository;
 import ar.edu.unju.fi.tpfinal.service.IOrderDetailService;
 
@@ -23,14 +24,10 @@ public class OrderDetailServiceImpMySQL implements IOrderDetailService {
 	private IOrderDetailRepository orderDetailRepo;
 	private List<OrderDetail> listOD=new ArrayList<OrderDetail>();
 	
-	@Override
-	public void guardarOrderDetail(OrderDetail orderDetail) {
-		orderDetailRepo.save(orderDetail);
-
-	}
+	
 
 	@Override
-	public void eliminarOrderDetail(int id) {
+	public void eliminarOrderDetail(OrderDetailId id) {
 		orderDetailRepo.deleteById(id);
 
 	}
@@ -42,7 +39,7 @@ public class OrderDetailServiceImpMySQL implements IOrderDetailService {
 	}
 
 	@Override
-	public OrderDetail getOrderDetailById(int id) {
+	public OrderDetail getOrderDetailById(OrderDetailId id) {
 		OrderDetail oD=orderDetailRepo.findById(id).get();
 		return oD;
 	}
@@ -51,6 +48,13 @@ public class OrderDetailServiceImpMySQL implements IOrderDetailService {
 	public OrderDetail getNewOrderDetail() {
 		// TODO Auto-generated method stub
 		return this.orderDetail;
+	}
+
+	@Override
+	public void guardarOrderDetail(OrderDetail orderDetail) {
+		// TODO Auto-generated method stub
+		orderDetailRepo.save(orderDetail);
+		
 	}
 
 }

@@ -25,7 +25,7 @@ public class ProductLine {
 	private String htmlDescription;
 	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")
-	private byte image;
+	private String image;
 //CONSTRUCTORES
 	/**
 	 * 
@@ -40,7 +40,7 @@ public class ProductLine {
 	 * @param htmlDescription
 	 * @param image
 	 */
-	public ProductLine(String productline, String textDescription, String htmlDescription, byte image) {
+	public ProductLine(String productline, String textDescription, String htmlDescription, String image) {
 		super();
 		this.productline = productline;
 		this.textDescription = textDescription;
@@ -66,10 +66,10 @@ public class ProductLine {
 	public void setHtmlDescription(String htmlDescription) {
 		this.htmlDescription = htmlDescription;
 	}
-	public byte getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(byte image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 //TO STRING
