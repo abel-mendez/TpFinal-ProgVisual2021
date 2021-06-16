@@ -30,8 +30,8 @@ public class EmployeeControlles {
 		LOGGER.info("METHOD : newEmployeePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA nuevo-office.html");
 		model.addAttribute("employee", employeeService.getEmployee());
-		model.addAttribute("office", officeService.getAllOffices());
-		model.addAttribute("employe", employeeService.getAllEmployees());
+		model.addAttribute("offices", officeService.getAllOffices());
+		model.addAttribute("employees", employeeService.getAllEmployees());
 		return "new-employee";
 	}
 	
@@ -41,6 +41,9 @@ public class EmployeeControlles {
 		LOGGER.info("METHOD : saveEmployeePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee.html");
 		ModelAndView modelView=new ModelAndView("all-employee");
+		System.out.println(oneEmployee.toString());
+		System.out.println(oneEmployee.getEmployee().toString());
+		System.out.println(oneEmployee.getOffice().toString());
 		employeeService.guardarEmployee(oneEmployee);
 		modelView.addObject("employees", employeeService.getAllEmployees());
 		return modelView;
