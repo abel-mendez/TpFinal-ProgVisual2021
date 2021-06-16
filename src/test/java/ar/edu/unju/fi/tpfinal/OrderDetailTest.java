@@ -26,7 +26,7 @@ class OrderDetailTest {
 	@Autowired
 	IOrderDetailRepository orderDetailRepo;
 	
-	@Test
+/*@Test
 	void testGuardarOrderDetails() {
 		OrderDetail orderDetail=new OrderDetail();
 		ProductLine pl=new ProductLine("pl1", "description", "wwww","22");
@@ -43,6 +43,6 @@ class OrderDetailTest {
 		orderDetailRepo.save(orderDetail);
 		
 		assertEquals(10, orderDetail.getQuantityOrdered());
-	}
+	}*/
 
 }

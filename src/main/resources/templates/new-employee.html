@@ -46,9 +46,9 @@
           </div>
           <!-- Select Office -->
           <div class="col-md-5">
-            <label for="office" class="form-label">Office Code</label>
-            <select name="office" id="office" class="form-select" aria-label="Default select example">
-				<option th:each="o: ${office}" th:value="${o.officeCode}" ><span th:text="${o.officeCode}" ></span></option>
+            <label  for="office" class="form-label">Office Code</label>
+            <select th:field="*{office.officeCode}" name="office" id="office" class="form-select" aria-label="Default select example">
+				<option th:each="o: ${offices}" th:value="${o.officeCode}" ><span th:text="${o.officeCode}" ></span></option>
 								  
 			</select>
           </div>
@@ -56,8 +56,8 @@
           <div class="col-md-5">
             <label for="employee" class="form-label">Report to</label>
           	 
-          	 <select name="employe" id="employe" class="form-select" aria-label="Default select example">
-				<option th:each="e: ${employe}" th:value="${e.employeeNumber}" ><span th:text="${e.lastName} + ${e.firstName}"></option>
+          	 <select th:field="*{employee.employeeNumber}" name="employe" id="employe" class="form-select" aria-label="Default select example">
+				<option th:each="e: ${employees}" th:value="${e.employeeNumber}" ><span th:text="${e.lastName} + ${e.firstName}"></option>
 								  
 			</select>
           </div>

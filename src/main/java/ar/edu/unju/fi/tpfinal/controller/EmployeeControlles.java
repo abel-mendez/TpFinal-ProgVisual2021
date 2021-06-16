@@ -20,7 +20,6 @@ public class EmployeeControlles {
 	@Autowired
 	private IEmployeeService employeeService;
 	private static final Log LOGGER=LogFactory.getLog(EmployeeControlles.class);
-	
 	@Autowired
 	private IOfficeService officeService;
 	
@@ -30,8 +29,8 @@ public class EmployeeControlles {
 		LOGGER.info("METHOD : newEmployeePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA nuevo-office.html");
 		model.addAttribute("employee", employeeService.getEmployee());
-		model.addAttribute("office", officeService.getAllOffices());
-		model.addAttribute("employe", employeeService.getAllEmployees());
+		model.addAttribute("offices", officeService.getAllOffices());
+		model.addAttribute("employees", employeeService.getAllEmployees());
 		return "new-employee";
 	}
 	
