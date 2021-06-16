@@ -75,7 +75,7 @@
           	</div>
 
             <!-- Select Employee -->
-            <div class="col-md-5">
+            <div class="col-md-6">
             <label for="employee" class="form-label">Employee </label>
             <select name="employee" id="employee" class="form-select" aria-label="Default select example">
 			<option th:each="e: ${employee}" th:value="${e.employeeNumber}" >
@@ -83,22 +83,15 @@
 	    </select>
             </div>
             <!-- Select Payments -->
-            <div class="col-md-5">
+            <div class="col-md-6">
 	            <label for="payment" class="form-label">Payment Method</label>
 	          	 <select name="payment" id="payment" class="form-select" aria-label="Default select example">
 					<option th:each="p: ${payment}" th:value="${p.checkNumber}" >
 					<span th:text="${p.checkNumber} + ${e.firstName}"></option>
 			 	</select>
           	</div>
-          <div class="col-md-2">
-            <label for="jobTitle" class="form-label">Job Title</label>
-            <input th:field="*{jobTitle}" type="text" class="form-control" id="jobTitle" />
-          </div>
-          
-          <br>
-          <hr>
-          <br>
-                    
+          <br><hr><br>
+                     
           <div class="col-12">
             <button type="submit" class="btn mt-2 btn-primary">
               New Customer
