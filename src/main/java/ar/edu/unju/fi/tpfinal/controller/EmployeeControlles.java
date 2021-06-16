@@ -20,7 +20,6 @@ public class EmployeeControlles {
 	@Autowired
 	private IEmployeeService employeeService;
 	private static final Log LOGGER=LogFactory.getLog(EmployeeControlles.class);
-	
 	@Autowired
 	private IOfficeService officeService;
 	
@@ -41,9 +40,6 @@ public class EmployeeControlles {
 		LOGGER.info("METHOD : saveEmployeePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee.html");
 		ModelAndView modelView=new ModelAndView("all-employee");
-		System.out.println(oneEmployee.toString());
-		System.out.println(oneEmployee.getEmployee().toString());
-		System.out.println(oneEmployee.getOffice().toString());
 		employeeService.guardarEmployee(oneEmployee);
 		modelView.addObject("employees", employeeService.getAllEmployees());
 		return modelView;
