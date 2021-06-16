@@ -37,7 +37,7 @@ public class Product {
 	@Column
 	private String productDescription;
 	@Column
-	private byte quantityInStock;
+	private int quantityInStock;
 	@Column
 	private double buyPrice;
 	@Column
@@ -64,7 +64,7 @@ public class Product {
 	 * @param msrp
 	 */
 	public Product(String productCode, String productName, ProductLine productLine, String productScale,
-			String productVendor, String productDescription, byte quantityInStock, double buyPrice, double msrp) {
+			String productVendor, String productDescription, int quantityInStock, double buyPrice, double msrp) {
 		super();
 		this.productCode = productCode;
 		this.productName = productName;
@@ -113,10 +113,10 @@ public class Product {
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-	public byte getQuantityInStock() {
+	public int getQuantityInStock() {
 		return quantityInStock;
 	}
-	public void setQuantityInStock(byte quantityInStock) {
+	public void setQuantityInStock(int quantityInStock) {
 		this.quantityInStock = quantityInStock;
 	}
 	public double getBuyPrice() {
