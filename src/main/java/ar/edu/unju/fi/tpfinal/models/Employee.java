@@ -22,7 +22,7 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	private int employeeNumbre;
+	private int employeeNumber;
 	@Column
 	private String lastName;
 	@Column
@@ -56,15 +56,15 @@ public class Employee {
 	/**
 	 * @return the employeeNumbre
 	 */
-	public int getEmployeeNumbre() {
-		return employeeNumbre;
+	public int getEmployeeNumber() {
+		return employeeNumber;
 	}
 
 	/**
 	 * @param employeeNumbre the employeeNumbre to set
 	 */
-	public void setEmployeeNumbre(int employeeNumbre) {
-		this.employeeNumbre = employeeNumbre;
+	public void setEmployeeNumber(int employeeNumber) {
+		this.employeeNumber = employeeNumber;
 	}
 
 	/**
@@ -175,10 +175,10 @@ public class Employee {
 	 * @param employee
 	 * @param jobTitle
 	 */
-	public Employee(int employeeNumbre, String lastName, String firstName, String extension, String email,
+	public Employee(int employeeNumber, String lastName, String firstName, String extension, String email,
 			Office office, Employee employee, String jobTitle) {
 		super();
-		this.employeeNumbre = employeeNumbre;
+		this.employeeNumber = employeeNumber;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.extension = extension;

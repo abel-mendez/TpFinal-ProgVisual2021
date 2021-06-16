@@ -40,7 +40,7 @@ public class EmployeeControlles {
 		LOGGER.info("CONTROLLER : EmployeeController with / post method");
 		LOGGER.info("METHOD : saveEmployeePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee.html");
-		ModelAndView modelView=new ModelAndView("employees");
+		ModelAndView modelView=new ModelAndView("all-employee");
 		employeeService.guardarEmployee(oneEmployee);
 		modelView.addObject("employees", employeeService.getAllEmployees());
 		return modelView;

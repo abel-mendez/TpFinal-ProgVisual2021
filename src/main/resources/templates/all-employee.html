@@ -43,8 +43,7 @@
 					<td th:text="${e.extension}"></td>
 					<td th:text="${e.email}"></td>
 					<td th:text="${e.office.officeCode}"></td>
-					<td th:text="${e.employee.employeeNumber}"></td>
-					<td th:text="${e.jobTitle}"></td>
+					<td th:text="${e.employee.lastName}"></td>
 					<td th:text="${e.user.id}"></td>
 					<td> 
 						<a th:href="@{/office/edit/}+${e.employeeNumber}" class="btn btn-success">Edit</a>

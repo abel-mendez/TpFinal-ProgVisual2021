@@ -23,7 +23,7 @@
         <form th:action="@{/employee/save}" th:object="${employee}" method="post" class="row g-3">
       		<div class="col-md-4">
             	<label for="employeeNumbre" class="form-label">Employee Number</label>
-            	<input th:field="*{employeeNumbre}" type="number" class="form-control" id="employeeNumbre" />
+            	<input th:field="*{employeeNumber}" type="number" class="form-control" id="employeeNumbre" />
           	</div>
           	<div class="col-md-4">
             	<label for="lastName" class="form-label">Last Name</label>
@@ -48,7 +48,7 @@
           <div class="col-md-5">
             <label for="office" class="form-label">Office Code</label>
             <select name="office" id="office" class="form-select" aria-label="Default select example">
-				<option th:each="o: ${office}" th:value="${o.officeCode}" ><span th:text="${o.city}" ></span></option>
+				<option th:each="o: ${office}" th:value="${o.officeCode}" ><span th:text="${o.officeCode}" ></span></option>
 								  
 			</select>
           </div>
@@ -57,7 +57,7 @@
             <label for="employee" class="form-label">Report to</label>
           	 
           	 <select name="employe" id="employe" class="form-select" aria-label="Default select example">
-				<option th:each="e: ${employe}" th:value="${e.employeeNumbre}" ><span th:text="${e.lastName} + ${e.firstName}"></option>
+				<option th:each="e: ${employe}" th:value="${e.employeeNumber}" ><span th:text="${e.lastName} + ${e.firstName}"></option>
 								  
 			</select>
           </div>
