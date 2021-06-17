@@ -23,20 +23,20 @@ public class ProductController {
 	private static final Log LOGGER=LogFactory.getLog(ProductLineController.class);
 	
 	@GetMapping("/product/new")
-	public String nuevoProductLinePage(Model model) {
-		LOGGER.info("-CONTROLLER : ProductLineController with / get method");
+	public String nuevoProductPage(Model model) {
+		LOGGER.info("-CONTROLLER : ProductController with / get method");
 		LOGGER.info("-METHOD : nuevoProductLinePage()");
-		LOGGER.info("-RESULT : VISUALIZA LA PAGINA new-productLine.html");
+		LOGGER.info("-RESULT : VISUALIZA LA PAGINA new-product.html");
 		model.addAttribute("product", productService.getNewProduct());
 		return "new-product";
 	}
 	
 
 	@PostMapping("/product/save")
-	public ModelAndView guardarProductLine(@ModelAttribute("product") Product product) {
-		LOGGER.info("CONTROLLER : OfficeController with / post method");
-		LOGGER.info("METHOD : guardarOfficePage()");
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");		
+	public ModelAndView guardarProduc(@ModelAttribute("product") Product product) {
+		LOGGER.info("CONTROLLER : ProductController with / post method");
+		LOGGER.info("METHOD : guardarProductPage()");
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-products.html");		
 		ModelAndView modelView = new ModelAndView("all-products");
 		productService.guardarProduct(product);
 		modelView.addObject("products",productService.getAllProducts());
@@ -44,12 +44,12 @@ public class ProductController {
 	}
 	
 	@GetMapping("/product/all")
-	public ModelAndView getProductsLinePage() {
-		LOGGER.info("CONTROLLER : OfficeController with / office/listado get method");
-		LOGGER.info("METHOD : getOfficesPage()");		
+	public ModelAndView getProductsPage() {
+		LOGGER.info("CONTROLLER : ProductController with / product/all get method");
+		LOGGER.info("METHOD : getProductsPage()");		
 		ModelAndView modelView = new ModelAndView("all-products");
-		modelView.addObject("productsLine",productService.getAllProducts());
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");
+		modelView.addObject("products",productService.getAllProducts());
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-products.html");
 		return modelView;
 	}
 	
