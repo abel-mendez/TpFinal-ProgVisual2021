@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.edu.unju.fi.tpfinal.models.Payment;
-import ar.edu.unju.fi.tpfinal.reposiroty.IPaymentRepository;
+import ar.edu.unju.fi.tpfinal.repository.IPaymentRepository;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
 public class PaymentServiceImpMySQL implements IPaymentService {

@@ -43,7 +43,9 @@
 					<td th:text="${e.extension}"></td>
 					<td th:text="${e.email}"></td>
 					<td th:text="${e.office.officeCode}"></td>
-					<!--<td th:text="${e.employee.employeeNumber}"></td>-->
+					<td th:if="${e.employee==null}" ></td>
+					<td th:if="${e.employee!=null}" th:text="${e.employee.employeeNumber}"></td>
+					<td th:text="${e.jobTitle}"></td>
 					<td th:text="${e.user.id}"></td>
 					<td> 
 						<a th:href="@{/employee/edit/}+${e.employeeNumber}" class="btn btn-success">Edit</a>

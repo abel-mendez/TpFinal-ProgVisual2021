@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.edu.unju.fi.tpfinal.models.Orders;
-import ar.edu.unju.fi.tpfinal.reposiroty.IOrdersRepository;
+import ar.edu.unju.fi.tpfinal.repository.IOrdersRepository;
 import ar.edu.unju.fi.tpfinal.service.IOrdersService;
 
 public class OrdersServiceImpMySQL implements IOrdersService{

@@ -12,9 +12,9 @@ import ar.edu.unju.fi.tpfinal.models.OrderDetailId;
 import ar.edu.unju.fi.tpfinal.models.Orders;
 import ar.edu.unju.fi.tpfinal.models.Product;
 import ar.edu.unju.fi.tpfinal.models.ProductLine;
-import ar.edu.unju.fi.tpfinal.reposiroty.IOrderDetailRepository;
-import ar.edu.unju.fi.tpfinal.reposiroty.IOrdersRepository;
-import ar.edu.unju.fi.tpfinal.reposiroty.IProductRepository;
+import ar.edu.unju.fi.tpfinal.repository.IOrderDetailRepository;
+import ar.edu.unju.fi.tpfinal.repository.IOrdersRepository;
+import ar.edu.unju.fi.tpfinal.repository.IProductRepository;
 
 class OrderDetailTest {
 	@Autowired
