@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.OrderDetail;
 import ar.edu.unju.fi.tpfinal.models.OrderDetailId;
-import ar.edu.unju.fi.tpfinal.reposiroty.IOrderDetailRepository;
+import ar.edu.unju.fi.tpfinal.repository.IOrderDetailRepository;
 import ar.edu.unju.fi.tpfinal.service.IOrderDetailService;
 
 /**

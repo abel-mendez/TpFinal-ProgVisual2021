@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.Usuario;
-import ar.edu.unju.fi.tpfinal.reposiroty.IUsuarioRepository;
+import ar.edu.unju.fi.tpfinal.repository.IUsuarioRepository;
 import ar.edu.unju.fi.tpfinal.service.IUsuarioService;
 
 /**
