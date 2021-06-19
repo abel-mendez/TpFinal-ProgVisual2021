@@ -61,7 +61,7 @@
             <input th:field="*{msrp}" type="text" class="form-control" id="msrp" />
           </div>
            <!-- Select Product Line -->
-          <div class="col-md-10">
+          <div class="col-md-12">
             <label  for="productLine" class="form-label">Product Line</label>
             <select th:field="*{productLine.productline}" name="productline" id="productline" class="form-select">
 				<option th:each="p: ${productsline}" th:value="${p.productline}" ><span th:text="${p.productline}" ></span></option>
