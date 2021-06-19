@@ -21,7 +21,59 @@
       <h3 class="text-white text-decoration-underline mb-5">New Product</h3>
       <div class="cont-form">
         <h4 class="text-white text-decoration-underline mb-4">Product Data</h4>
-        
+        <form th:action="@{/product/save}" th:object="${product}" method="post" class="row g-3">
+        <div class="col-md-3">
+            <label for="productCode" class="form-label">Product Code</label>
+            <input th:field="*{productCode}" type="text" class="form-control" id="productCode" />
+          </div>
+          <div class="col-md-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input th:field="*{productName}" type="text" class="form-control" id="productName" />
+          </div>
+          <div class="col-md-3">
+            <label for="productScale" class="form-label">Product Scale</label>
+            <input th:field="*{productScale}" type="text" class="form-control" id="productScale" />
+          </div>
+          <div class="col-md-3">
+            <label for="productVendor" class="form-label">Product Vendor</label>
+            <input th:field="*{productVendor}" type="text" class="form-control" id="productVendor" />
+          </div>
+          <div class="col-12">
+            <label for="productDescription" class="form-label">Product Description</label>
+            <input
+            th:field="*{productDescription}"
+              type="text"
+              class="form-control"
+              id="productDescription"
+              placeholder="Description . . . . "
+            />
+          </div>
+          <div class="col-md-4">
+            <label for="quantityInStock" class="form-label">Quantity in Stock</label>
+            <input th:field="*{quantityInStock}" type="text" class="form-control" id="quantityInStock" />
+          </div>
+          <div class="col-md-4">
+            <label for="buyPrice" class="form-label">Buy Price</label>
+          	 <input th:field="*{buyPrice}" type="text" class="form-control" id="buyPrice" />
+          </div>
+          <div class="col-md-4">
+            <label for="msrp" class="form-label">MSRP</label>
+            <input th:field="*{msrp}" type="text" class="form-control" id="msrp" />
+          </div>
+           <!-- Select Product Line -->
+          <div class="col-md-10">
+            <label  for="productline" class="form-label">Product Line</label>
+            <select th:field="*{productline.productline}" name="productline" id="productline" class="form-select">
+				<option th:each="p: ${productsline}" th:value="${p.productline}" ><span th:text="${p.productline}" ></span></option>
+								  
+			</select>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn mt-2 btn-primary">
+              New Product
+            </button>
+          </div>
+        </form>
       </div>
     </main>
     <script
