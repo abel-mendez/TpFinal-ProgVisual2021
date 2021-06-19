@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.models.Employee;
 import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 import ar.edu.unju.fi.tpfinal.service.IOfficeService;
+import ar.edu.unju.fi.tpfinal.service.IUsuarioService;
 
 @Controller
 public class EmployeeControlles {
@@ -22,6 +24,8 @@ public class EmployeeControlles {
 	private static final Log LOGGER=LogFactory.getLog(EmployeeControlles.class);
 	@Autowired
 	private IOfficeService officeService;
+	@Autowired
+	private IUsuarioService usuarioService;
 	
 	@GetMapping("/employee/new")
 	public String newEmployeePage(Model model) {
@@ -34,15 +38,31 @@ public class EmployeeControlles {
 		return "new-employee";
 	}
 	
-	@PostMapping("/employee/save")
-	public ModelAndView saveEmployeePage(@ModelAttribute("employee") Employee oneEmployee) {
-		LOGGER.info("CONTROLLER : EmployeeController with / post method");
-		LOGGER.info("METHOD : saveEmployeePage()");
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee.html");
-		ModelAndView modelView=new ModelAndView("all-employee");
-		employeeService.guardarEmployee(oneEmployee);
-		modelView.addObject("employees", employeeService.getAllEmployees());
-		return modelView;
+	@GetMapping("/employee/save")
+	public String saveEmployeePage(Model model, @RequestParam (name="employeeNumber") String employeeNumber,
+			 @RequestParam (name="lastName") String lastName, @RequestParam (name="firstName") String firstName,
+			 @RequestParam (name="extension") String extension, @RequestParam (name="email") String email,
+			 @RequestParam (name="office") String officeCode, @RequestParam (name="employee") String reportsTo,
+			 @RequestParam (name="jobTitle") String jobTitle,@RequestParam (name="usuario") String id) {
+		Employee emplo = new Employee() ;
+		emplo.setEmployeeNumber(Integer.valueOf(employeeNumber));
+		emplo.setLastName(lastName);
+		emplo.setFirstName(firstName);
+		emplo.setExtension(extension);
+		emplo.setEmail(email);
+		
+		emplo.setOffice(this.officeService.getOfficeById(officeCode));
+		
+		if (employeeService.getAllEmployees()== null) {
+			emplo.setEmployee(null);
+		}else {
+			emplo.setEmployee(this.employeeService.getEmployeeById(Integer.valueOf(reportsTo)));
+		}
+		emplo.setJobTitle(jobTitle);
+		emplo.setUser(this.usuarioService.buscarPorUsuario(id));
+		employeeService.guardarEmployee(emplo);
+		model.addAttribute("employees", employeeService.getAllEmployees());
+		return "all-employee";
 	}
 	
 	@GetMapping("/employee/all")
