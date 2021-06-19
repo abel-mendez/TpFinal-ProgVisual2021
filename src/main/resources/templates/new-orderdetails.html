@@ -20,7 +20,41 @@
       <br>
       <div class="cont-form">
         <h4 class="text-white text-decoration-underline mb-4">Order Details Data</h4>
-        
+        <form th:action="@{/orderDetails/save}" th:object="${orderDetail}" method="post" class="row g-3">
+          <!-- Select Order -->
+          <div class="col-md-6">
+            <label  for="orderNumber" class="form-label">Order Number</label>
+            <select th:field="*{order.orderNumber}" name="orderNumber" id="orderNumber" class="form-select" >
+				<option th:each="o: ${order}" th:value="${o.orderNumber}" ><span th:text="${o.orderNumber}" ></span></option>			  
+			</select>
+          </div> 
+          <!-- Select Product -->
+          <div class="col-md-6">
+            <label  for="productCode" class="form-label">Product Code</label>
+            <select th:field="*{product.productCode}" name="productCode" id="productCode" class="form-select" >
+				<option th:each="p: ${product}" th:value="${p.productCode}" ><span th:text="${p.productCode}" ></span></option>			  
+			</select>
+          </div> 
+          <!-- Order Detail -->
+          	<div class="col-md-4">
+            	<label for="quantityOrdered" class="form-label">Quantity Ordered</label>
+            	<input th:field="*{quantityOrdered}" type="date" class="form-control" id="quantityOrdered" />
+          	</div>
+          	<div class="col-md-4">
+            	<label for="princeEach" class="form-label">Prince Each</label>
+            	<input th:field="*{princeEach}" type="date" class="form-control" id="princeEach" />
+          	</div>
+          	<div class="col-md-4">
+           		<label for="orderLineNumber" class="form-label">Order Line Number</label>
+            	<input th:field="*{orderLineNumber}" type="text" class="form-control" id="orderLineNumber" />
+          	</div>
+       
+          <div class="col-12">
+            <button type="submit" class="btn mt-2 btn-primary">
+              New Order Details
+            </button>
+          </div>
+        </form>
       </div>
     </main>
     <script
