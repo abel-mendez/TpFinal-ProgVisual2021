@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.Orders;
 import ar.edu.unju.fi.tpfinal.repository.IOrdersRepository;
 import ar.edu.unju.fi.tpfinal.service.IOrdersService;
-
+@Service
 public class OrdersServiceImpMySQL implements IOrdersService{
 	
 	private List<Orders> orderss= new ArrayList<Orders>();
