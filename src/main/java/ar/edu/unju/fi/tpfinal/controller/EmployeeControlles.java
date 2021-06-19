@@ -38,22 +38,11 @@ public class EmployeeControlles {
 		return "new-employee";
 	}
 	
-	/**@PostMapping("/employee/save")
-	public ModelAndView saveEmployeePage(@ModelAttribute("employee") Employee oneEmployee) {
-		LOGGER.info("CONTROLLER : EmployeeController with / post method");
-		LOGGER.info("METHOD : saveEmployeePage()");
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee.html");
-		ModelAndView modelView=new ModelAndView("all-employee");
-		employeeService.guardarEmployee(oneEmployee);
-		modelView.addObject("employees", employeeService.getAllEmployees());
-		return modelView;
-	} **/
-	
 	@GetMapping("/employee/save")
 	public String saveEmployeePage(Model model, @RequestParam (name="employeeNumber") String employeeNumber,
 			 @RequestParam (name="lastName") String lastName, @RequestParam (name="firstName") String firstName,
 			 @RequestParam (name="extension") String extension, @RequestParam (name="email") String email,
-			 @RequestParam (name="office") String office, @RequestParam (name="employee") String reportsTo,
+			 @RequestParam (name="office") String officeCode, @RequestParam (name="employee") String reportsTo,
 			 @RequestParam (name="jobTitle") String jobTitle,@RequestParam (name="usuario") String id) {
 		Employee emplo = new Employee() ;
 		emplo.setEmployeeNumber(Integer.valueOf(employeeNumber));
@@ -62,7 +51,7 @@ public class EmployeeControlles {
 		emplo.setExtension(extension);
 		emplo.setEmail(email);
 		
-		emplo.setOffice(this.officeService.getOfficeById(office));
+		emplo.setOffice(this.officeService.getOfficeById(officeCode));
 		
 		if (employeeService.getAllEmployees()== null) {
 			emplo.setEmployee(null);
