@@ -20,10 +20,10 @@
       <br>
       <div class="cont-form">
         <h4 class="text-white text-decoration-underline mb-4">Employee Data</h4>
-        <form th:action="@{/employee/save}" th:object="${employee}" method="post" class="row g-3">
+        <form th:action="@{/employee/save}" th:object="${employee}" method="get" class="row g-3">
       		<div class="col-md-4">
-            	<label for="employeeNumbre" class="form-label">Employee Number</label>
-            	<input th:field="*{employeeNumber}" type="number" class="form-control" id="employeeNumbre" />
+            	<label for="employeeNumber" class="form-label">Employee Number</label>
+            	<input th:field="*{employeeNumber}" type="number" class="form-control" id="employeeNumber" />
           	</div>
           	<div class="col-md-4">
             	<label for="lastName" class="form-label">Last Name</label>
