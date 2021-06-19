@@ -90,6 +90,8 @@ public class EmployeeControlles {
 		ModelAndView modelView = new ModelAndView("new-employee");
 		Employee employee= employeeService.getEmployeeById(id);
 		modelView.addObject("employee", employee);
+		modelView.addObject("employees",employeeService.getAllEmployees());
+		modelView.addObject("offices",officeService.getAllOffices());
 		return modelView;
 	}
 
