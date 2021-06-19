@@ -42,7 +42,7 @@ public class EmployeeControlles {
 	public String saveEmployeePage(Model model, @RequestParam (name="employeeNumber") String employeeNumber,
 			 @RequestParam (name="lastName") String lastName, @RequestParam (name="firstName") String firstName,
 			 @RequestParam (name="extension") String extension, @RequestParam (name="email") String email,
-			 @RequestParam (name="office") String officeCode, @RequestParam (name="employee") String reportsTo,
+			 @RequestParam (name="office.officeCode") String officeCode, @RequestParam (name="employee.employeeNumber") String reportsTo,
 			 @RequestParam (name="jobTitle") String jobTitle,@RequestParam (name="usuario") String id) {
 		Employee emplo = new Employee() ;
 		emplo.setEmployeeNumber(Integer.valueOf(employeeNumber));
@@ -53,7 +53,7 @@ public class EmployeeControlles {
 		
 		emplo.setOffice(this.officeService.getOfficeById(officeCode));
 		
-		if (employeeService.getAllEmployees()== null) {
+		if (Integer.valueOf(reportsTo)== 0) {
 			emplo.setEmployee(null);
 		}else {
 			emplo.setEmployee(this.employeeService.getEmployeeById(Integer.valueOf(reportsTo)));
