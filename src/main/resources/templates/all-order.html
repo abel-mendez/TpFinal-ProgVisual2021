@@ -17,9 +17,42 @@
 		
 		<main class="w-75 m-auto mt-3 mb-3 main text-center row">
       	<h3 class="text-white mb-5 text-decoration-underline">All Order</h3>
-     
-     
-     
+     	<div class="cont-form">
+	        <div class="table-responsive">
+	        	<table class="table table-hover">
+				  <thead>
+				    <tr class="text-white">
+				      <th scope="col">Order Number </th>
+				      <th scope="col">Order Date</th>
+				      <th scope="col">Required Date</th>
+				      <th scope="col">Shipped Date</th>
+				      <th scope="col">Status</th>
+				      <th scope="col">Comments</th>
+				      <th scope="col">Customers Number</th>
+				      <th scope="col">Actions</th>
+				      
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr class="text-white" th:each="o: ${orders}" >
+						<td th:text="${o.orderNumber}"></td>
+						<td th:text="${o.orderDate}"></td>
+						<td th:text="${o.requiredDate}"></td>
+						<td th:text="${o.shippedDate}"></td>
+						<td th:text="${o.status}"></td>
+						<td th:text="${o.comments}"></td>
+						<td th:text="${o.customers.customerNumber}"></td>
+						<td> 
+							<a th:href="@{/order/edit/}+${o.orderNumber}" class="btn btn-success">Edit</a>
+							<a th:href="@{/order/delete/}+${o.orderNumber}" class="btn btn-danger">Delete</a>
+						 </td>
+					</tr>
+				  </tbody>
+				</table>
+	        </div>
+	
+	     </div>
+ 
     	</main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
