@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.models.Employee;
+import ar.edu.unju.fi.tpfinal.models.Usuario;
 import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 import ar.edu.unju.fi.tpfinal.service.IOfficeService;
 import ar.edu.unju.fi.tpfinal.service.IUsuarioService;
@@ -43,7 +44,9 @@ public class EmployeeControlles {
 			 @RequestParam (name="lastName") String lastName, @RequestParam (name="firstName") String firstName,
 			 @RequestParam (name="extension") String extension, @RequestParam (name="email") String email,
 			 @RequestParam (name="office.officeCode") String officeCode, @RequestParam (name="employee.employeeNumber") String reportsTo,
-			 @RequestParam (name="jobTitle") String jobTitle,@RequestParam (name="usuario") String id) {
+			 @RequestParam (name="jobTitle") String jobTitle,
+			 @RequestParam (name="user.id") Long id,@RequestParam (name="user.usuario") String usuario,
+			 @RequestParam (name="user.password") String password,@RequestParam (name="user.tipo") String tipo) {
 		Employee emplo = new Employee() ;
 		emplo.setEmployeeNumber(Integer.valueOf(employeeNumber));
 		emplo.setLastName(lastName);
@@ -59,7 +62,14 @@ public class EmployeeControlles {
 			emplo.setEmployee(this.employeeService.getEmployeeById(Integer.valueOf(reportsTo)));
 		}
 		emplo.setJobTitle(jobTitle);
-		emplo.setUser(this.usuarioService.buscarPorUsuario(id));
+		
+		Usuario user= new Usuario();
+		user.setId(id);
+		user.setUsuario(usuario);
+		user.setPassword(password);
+		user.setTipo(tipo);
+		usuarioService.guardarUsuario(user);
+		emplo.setUser(user);
 		employeeService.guardarEmployee(emplo);
 		model.addAttribute("employees", employeeService.getAllEmployees());
 		return "all-employee";
@@ -79,7 +89,7 @@ public class EmployeeControlles {
 	public ModelAndView editEmployeePage(@PathVariable(value="id") int id) {
 		ModelAndView modelView = new ModelAndView("new-employee");
 		Employee employee= employeeService.getEmployeeById(id);
-		modelView.addObject("employees", employee);
+		modelView.addObject("employee", employee);
 		return modelView;
 	}
 
