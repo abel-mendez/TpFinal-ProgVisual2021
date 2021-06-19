@@ -43,7 +43,6 @@ public class ProductLineController {
 	}
 	
 	@GetMapping("/product/productLine/all")
-	//@ModelAttribute("office")Office oneOffice
 	public ModelAndView getProductsLinePage() {
 		LOGGER.info("CONTROLLER : OfficeController with / office/listado get method");
 		LOGGER.info("METHOD : getOfficesPage()");		
@@ -55,7 +54,7 @@ public class ProductLineController {
 	
 	@GetMapping("/product/productLine/edit/{id}")
 	public ModelAndView editOfficePage(@PathVariable(value="id") String id) {
-		ModelAndView modelView = new ModelAndView("nuevo-office");
+		ModelAndView modelView = new ModelAndView("new-productLine");
 		ProductLine productLine= productLineService.getProductLineById(id);
 		modelView.addObject("productLine", productLine);
 		return modelView;

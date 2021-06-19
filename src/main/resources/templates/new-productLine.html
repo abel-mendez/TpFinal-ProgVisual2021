@@ -21,7 +21,7 @@
       	<!-- FORM -->
       	<div class="cont-form">
       		<h4 class="text-white text-decoration-underline mb-4">Product Line Data</h4>
-      		<form th:action="@{/productLine/save}" th:object="${productLine}" method="post" class="row g-3">
+      		<form th:action="@{/product/productLine/save}" th:object="${productLine}" method="post" class="row g-3">
       			<div class="col-md-4">
             		<label for="employeeNumbre" class="form-label">Product Line (id)</label>
             		<input th:field="*{productline}" type="text" class="form-control" id="productline" />
