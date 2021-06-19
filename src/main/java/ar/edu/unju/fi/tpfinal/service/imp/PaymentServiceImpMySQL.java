@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.Payment;
 import ar.edu.unju.fi.tpfinal.repository.IPaymentRepository;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
-
+@Service
 public class PaymentServiceImpMySQL implements IPaymentService {
 	private List<Payment> payments=new ArrayList<Payment>();
 	@Autowired
