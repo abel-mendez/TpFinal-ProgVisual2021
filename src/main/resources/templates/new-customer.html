@@ -23,46 +23,57 @@
       		<div class="col-md-4">
             	<label for="customerNumber" class="form-label">Customer Number</label>
             	<input th:field="*{customerNumber}" type="number" class="form-control" id="customerNumber" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('customerNumber')}" th:errors="*{customerNumber}" ></div>
           	</div>
           	<div class="col-md-4">
             	<label for="customerName" class="form-label">Customer Name</label>
             	<input th:field="*{customerName}" type="text" class="form-control" id="customerName" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" ></div>
           	</div>
           	<div class="col-md-4">
             	<label for="contactLastName" class="form-label">Contact Last Name</label>
             	<input th:field="*{contactLastName}" type="text" class="form-control" id="contactLastName" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('contactLastName')}" th:errors="*{contactLastName}" ></div>
           	</div>
           	<div class="col-md-4">
            	<label for="contactFirstName" class="form-label">Contact First Name</label>
             	<input th:field="*{contactFirstName}" type="text" class="form-control" id="contactFirstName" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('contactFirstName')}" th:errors="*{contactFirstName}" ></div>
           	</div>
           	<div class="col-md-4">
            	<label for="phone" class="form-label">Phone</label>
             	<input th:field="*{phone}" type="text" class="form-control" id="phone" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" ></div>
           	</div>
           	<div class="col-md-4">
            	<label for="addresLine1" class="form-label">Address Line 1</label>
             	<input th:field="*{addresLine1}" type="text" class="form-control" id="addresLine1" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('addresLine1')}" th:errors="*{addresLine1}" ></div>
           	</div>
           	<div class="col-md-4">
            	<label for="addresLine2" class="form-label">Address Line 2</label>
             	<input th:field="*{addresLine2}" type="text" class="form-control" id="addresLine2" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('addresLine2')}" th:errors="*{addresLine2}" ></div>
           	</div>
           	<div class="col-md-4">
            	<label for="city" class="form-label">City</label>
             	<input th:field="*{city}" type="text" class="form-control" id="city" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}" ></div>
           	</div>
           	<div class="col-md-4">
            	<label for="state" class="form-label">State</label>
             	<input th:field="*{state}" type="text" class="form-control" id="state" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}" ></div>
           	</div>
           	<div class="col-md-4">
            	<label for="postalCode" class="form-label">Postal Code</label>
             	<input th:field="*{postalCode}" type="text" class="form-control" id="postalCode" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" ></div>
           	</div>
           	<div class="col-md-4">
            	<label for="country" class="form-label">Country</label>
             	<input th:field="*{country}" type="text" class="form-control" id="country" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}" ></div>
           	</div>
           	<!--Select Employe  -->
           	<div class="col-md-5">
@@ -72,11 +83,13 @@
 					<option th:each="e: ${employees}" th:value="${e.employeeNumber}" ><span th:text="${e.lastName}" ></span></option>
 									  
 				</select>
+				<div class=" alert alert-danger" th:if="${#fields.hasErrors('employee.employeeNumber')}" th:errors="*{employee.employeeNumber}" ></div>
           	</div>
           	
           	<div class="col-md-4">
            	<label for="creditLimit" class="form-label">Credit Limit</label>
             	<input th:field="*{creditLimit}" type="text" class="form-control" id="creditLimit" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('creditLimit')}" th:errors="*{creditLimit}" ></div>
           	</div>
           <div class="col-12">
             <button type="submit" class="btn mt-2 btn-primary">

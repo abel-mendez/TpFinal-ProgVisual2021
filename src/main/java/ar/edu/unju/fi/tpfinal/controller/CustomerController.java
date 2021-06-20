@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,23 +39,30 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/customer/save")
-	public ModelAndView guardarCustomer(@ModelAttribute("customer")Customers unCustomer) {
-		
-		ModelAndView modelView=new ModelAndView("all-customer");
-		
-		
-		if (unCustomer.getEmployee().getEmployeeNumber()==0) {
-			unCustomer.setEmployee(null);
-			
-		} else {
-			Employee employee=employeeService.getEmployeeById(unCustomer.getEmployee().getEmployeeNumber());
-			unCustomer.setEmployee(employee);
-			System.out.println("--->"+employee);
+	public ModelAndView guardarCustomer(@Valid @ModelAttribute("customer")Customers unCustomer,BindingResult result) {
+		LOGGER.info("CONTROLLER : customerController with / post method");
+		LOGGER.info("METHOD : guardarCustomer()");
+		if (result.hasErrors()) {
+			LOGGER.info("RESULT : VALIDACION");
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-customer.html");
+			ModelAndView modelVi= new ModelAndView("new-customer");
+			modelVi.addObject("customer", unCustomer);
+			modelVi.addObject("employees",customerService.getAllCustomers());
+			return modelVi;
+		}else {
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-customer.html");
+			ModelAndView modelView=new ModelAndView("all-customer");
+			if (unCustomer.getEmployee().getEmployeeNumber()==0) {
+				unCustomer.setEmployee(null);
+			} else {
+				Employee employee=employeeService.getEmployeeById(unCustomer.getEmployee().getEmployeeNumber());
+				unCustomer.setEmployee(employee);
+				System.out.println("--->"+employee);
+			}
+			customerService.guardarCustomer(unCustomer);
+			modelView.addObject("customers",customerService.getAllCustomers());
+			return modelView;
 		}
-		
-		customerService.guardarCustomer(unCustomer);
-		modelView.addObject("customers",customerService.getAllCustomers());
-		return modelView;
 	}
 	
 	@GetMapping("/customer/all")

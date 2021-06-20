@@ -11,6 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,37 +27,62 @@ public class Customers {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
+	@NotNull(message = "Debes introducir customerNumber")
 	private int customerNumber;
 	@Column
+	@NotEmpty(message="Debes ingresar customerName")
+	@Size(min = 5,max = 30, message="Minimo 5 y Maximo 30 caracteres")
 	private String customerName;
 	@Column
+	@NotEmpty(message="Debes ingresar contactLastName")
+	@Size(min = 5,max = 30, message="Minimo 5 y Maximo 30 caracteres")
 	private String contactLastName;
 	@Column
+	@NotEmpty(message="Debes ingresar contactFirstName")
+	@Size(min = 5,max = 30, message="Minimo 5 y Maximo 30 caracteres")
 	private String contactFirstName;
 	@Column
+	@NotNull(message = "Debes introducir un numero de telofono")
+	@Min(value=6,message="minimo 6 digitos")
 	private int phone;
 	@Column
+	@NotEmpty(message="Debes ingresar addresLine1")
+	@Size(min = 5,max = 50, message="Minimo 5 y Maximo 50 caracteres")
 	private String addresLine1;
 	@Column
+	@NotEmpty(message="Debes ingresar addresLine2")
+	@Size(min = 5,max = 50, message="Minimo 5 y Maximo 50 caracteres")
 	private String addresLine2;
 	@Column
+	@NotEmpty(message="Debes ingresar city")
+	@Size(min = 5,max = 60, message="Minimo 5 y Maximo 60 caracteres")
 	private String city;
 	@Column
+	@NotEmpty(message="Debes ingresar un status")
+	@Size(min = 5,max = 50, message="Minimo 5 y Maximo 50 caracteres")
 	private String state;
 	@Column
+	@NotNull(message = "Debes introducir postalCode")
+	@Min(value=4,message="minimo 4 digitos")
 	private int postalCode;
 	@Column
+	@NotEmpty(message="Debes ingresar country")
+	@Size(min = 5,max = 50, message="Minimo 5 y Maximo 50 caracteres")
 	private String country;
 	@Column
+	@NotNull(message = "Debes introducir creditLimit")
+	@Min(value=100,message="Minimo valor 100")
 	private Double creditLimit;
 	
 	@Autowired
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="salesRepEmployeeNumber")
+	@Valid
 	private Employee employee;
 	
 	@Autowired
 	@OneToOne(mappedBy = "customers",fetch = FetchType.LAZY)
+	@Valid
 	private Payment payment; 
 	
 	public Customers() {
