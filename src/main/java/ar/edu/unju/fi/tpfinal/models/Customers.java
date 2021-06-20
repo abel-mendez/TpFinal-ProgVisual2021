@@ -31,20 +31,20 @@ public class Customers {
 	private int customerNumber;
 	@Column
 	@NotEmpty(message="Debes ingresar customerName")
-	@Size(min = 5,max = 30, message="Minimo 5 y Maximo 30 caracteres")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String customerName;
 	@Column
 	@NotEmpty(message="Debes ingresar contactLastName")
-	@Size(min = 5,max = 30, message="Minimo 5 y Maximo 30 caracteres")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String contactLastName;
 	@Column
 	@NotEmpty(message="Debes ingresar contactFirstName")
-	@Size(min = 5,max = 30, message="Minimo 5 y Maximo 30 caracteres")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String contactFirstName;
 	@Column
-	@NotNull(message = "Debes introducir un numero de telofono")
-	@Min(value=6,message="minimo 6 digitos")
-	private int phone;
+	@NotEmpty(message="Debes ingresar phone")
+	@Size(min = 8,max = 30, message="Minimo 8 y Maximo 30 caracteres")
+	private String phone;
 	@Column
 	@NotEmpty(message="Debes ingresar addresLine1")
 	@Size(min = 5,max = 50, message="Minimo 5 y Maximo 50 caracteres")
@@ -148,14 +148,14 @@ public class Customers {
 	/**
 	 * @return the phone
 	 */
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
 	/**
 	 * @param phone the phone to set
 	 */
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -302,7 +302,7 @@ public class Customers {
 	 * @param payment
 	 */
 	public Customers(int customerNumber, String customerName, String contactLastName, String contactFirstName,
-			int phone, String addresLine1, String addresLine2, String city, String state, int postalCode,
+			String phone, String addresLine1, String addresLine2, String city, String state, int postalCode,
 			String country, Double creditLimit, Employee employee, Payment payment) {
 		super();
 		this.customerNumber = customerNumber;
