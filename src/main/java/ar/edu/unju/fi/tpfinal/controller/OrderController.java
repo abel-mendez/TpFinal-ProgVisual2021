@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,15 +46,23 @@ public class OrderController {
 	 * @return pagina all-order
 	 */
 	@PostMapping("/order/save")
-	public ModelAndView saveOrderPage(@ModelAttribute("order") Orders oneOrder) {
+	public ModelAndView saveOrderPage(@Valid @ModelAttribute("order") Orders oneOrder,BindingResult result) {
 		LOGGER.info("CONTROLLER : OrderController with / post method");
 		LOGGER.info("METHOD : saveOrderPage()");
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-order.html");
-		ModelAndView modelView=new ModelAndView("all-orders");
-		orderService.guardarOrder(oneOrder);
-		modelView.addObject("orders", orderService.getAllOrders());
-		return modelView;
-
+		if (result.hasErrors()) {
+			LOGGER.info("RESULT : VALIDACION");
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-order.html");
+			ModelAndView modelVi= new ModelAndView("new-order");
+			modelVi.addObject("order", oneOrder);
+			return modelVi;
+		}else {
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-order.html");
+			ModelAndView modelView=new ModelAndView("all-orders");
+			orderService.guardarOrder(oneOrder);
+			modelView.addObject("orders", orderService.getAllOrders());
+			return modelView;
+		}
+		
 	}
 	
 	@GetMapping("/order/all")

@@ -27,6 +27,7 @@ public class Customers {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
+	@NotNull(message = "Debes introducir customerNumber")
 	private int customerNumber;
 	@Column
 	@NotEmpty(message="Debes ingresar customerName")
