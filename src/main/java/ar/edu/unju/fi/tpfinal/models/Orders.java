@@ -50,7 +50,7 @@ public class Orders {
 	@Autowired
 	@ManyToOne
 	@JoinColumn(name="customerNumber")
-	@Valid
+	//@Valid
 	private Customers customers;
 	
 	public Orders() {

@@ -34,7 +34,7 @@ public class CustomerController {
 		LOGGER.info("-METHOD : nuevoProductLinePage()");
 		LOGGER.info("-RESULT : VISUALIZA LA PAGINA new-product.html");
 		model.addAttribute("customer", customerService.getCustomer());
-		model.addAttribute("employees",customerService.getAllCustomers());
+		model.addAttribute("employees",employeeService.getAllEmployees());
 		return "new-customer";
 	}
 	
@@ -57,7 +57,6 @@ public class CustomerController {
 			} else {
 				Employee employee=employeeService.getEmployeeById(unCustomer.getEmployee().getEmployeeNumber());
 				unCustomer.setEmployee(employee);
-				System.out.println("--->"+employee);
 			}
 			customerService.guardarCustomer(unCustomer);
 			modelView.addObject("customers",customerService.getAllCustomers());

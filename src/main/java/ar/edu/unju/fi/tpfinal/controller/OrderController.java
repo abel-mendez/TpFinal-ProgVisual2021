@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.tpfinal.models.Customers;
+import ar.edu.unju.fi.tpfinal.models.Employee;
 import ar.edu.unju.fi.tpfinal.models.Orders;
+import ar.edu.unju.fi.tpfinal.models.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.ICustomersService;
 import ar.edu.unju.fi.tpfinal.service.IOrdersService;
 
@@ -54,12 +57,16 @@ public class OrderController {
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-order.html");
 			ModelAndView modelVi= new ModelAndView("new-order");
 			modelVi.addObject("order", oneOrder);
+			modelVi.addObject("customers", customerService.getAllCustomers());	
 			return modelVi;
 		}else {
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-order.html");
-			ModelAndView modelView=new ModelAndView("all-orders");
+			ModelAndView modelView=new ModelAndView("all-order");
+			Customers cust= customerService.getCustomerById(oneOrder.getCustomers().getCustomerNumber());
+			oneOrder.setCustomers(cust);
 			orderService.guardarOrder(oneOrder);
 			modelView.addObject("orders", orderService.getAllOrders());
+
 			return modelView;
 		}
 		
@@ -79,7 +86,7 @@ public class OrderController {
 	public ModelAndView editOrderPage(@PathVariable(value="id") int id) {
 		ModelAndView modelView = new ModelAndView("new-order");
 		Orders order= orderService.getOrderById(id);
-		modelView.addObject("orders", order);
+		modelView.addObject("order", order);
 		return modelView;
 	}
 
