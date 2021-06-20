@@ -10,8 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -23,18 +28,29 @@ public class Orders {
 	@Column
 	private int orderNumber;
 	@Column
+	@NotNull(message="Debe ingresar una fecha")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date orderDate;
 	@Column
+	@NotNull(message="Debe ingresar una fecha")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date requiredDate;
 	@Column
+	@NotNull(message="Debe ingresar una fecha")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date shippedDate;
 	@Column
+	@NotEmpty(message="Debes ingresar un status")
+	@Size(min = 5,max = 50, message="Minimo 5 y Maximo 50 caracteres")
 	private String status;
 	@Column
+	@NotEmpty(message="Debes ingresar un comments")
+	@Size(min = 10,max = 100, message="Minimo 10 y Maximo 100 caracteres")
 	private String comments;
 	@Autowired
 	@ManyToOne
 	@JoinColumn(name="customerNumber")
+	@Valid
 	private Customers customers;
 	
 	public Orders() {
