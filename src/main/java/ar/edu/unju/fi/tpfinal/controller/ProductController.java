@@ -26,7 +26,7 @@ public class ProductController {
 	@GetMapping("/product/new")
 	public String nuevoProductPage(Model model) {
 		LOGGER.info("-CONTROLLER : ProductController with / get method");
-		LOGGER.info("-METHOD : nuevoProductLinePage()");
+		LOGGER.info("-METHOD : nuevoProductPage()");
 		LOGGER.info("-RESULT : VISUALIZA LA PAGINA new-product.html");
 		model.addAttribute("product", productService.getNewProduct());
 		model.addAttribute("productsLine",productLineService.getAllProductsLine());
@@ -59,7 +59,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/product/edit/{id}")
-	public ModelAndView editOfficePage(@PathVariable(value="id") String id) {
+	public ModelAndView editProductPage(@PathVariable(value="id") String id) {
 		ModelAndView modelView = new ModelAndView("new-product");
 		Product product= productService.getProductById(id);
 		modelView.addObject("product", product);
@@ -68,7 +68,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/product/delete/{id}")
-	public ModelAndView deleteOfficePage(@PathVariable(value="id") String id) { 
+	public ModelAndView deleteProductPage(@PathVariable(value="id") String id) { 
 		ModelAndView modelView = new ModelAndView("redirect:/product/all");
 		productService.eliminarProduct(id);
 		return modelView;

@@ -32,7 +32,7 @@ public class EmployeeControlles {
 	public String newEmployeePage(Model model) {
 		LOGGER.info("CONTROLLER : EmployeeController with / get method");
 		LOGGER.info("METHOD : newEmployeePage()");
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA nuevo-office.html");
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA new-employee.html");
 		model.addAttribute("employee", employeeService.getEmployee());
 		model.addAttribute("offices", officeService.getAllOffices());
 		model.addAttribute("employees", employeeService.getAllEmployees());
