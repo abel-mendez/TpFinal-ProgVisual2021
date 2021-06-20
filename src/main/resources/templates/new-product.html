@@ -15,7 +15,7 @@
     <title>Product</title>
   </head>
   <body class="body">
-  <header th:replace="/layout/header-office :: header-office"></header>
+  <header th:replace="/layout/header-product :: header-product"></header>
 
     <main class="w-75 m-auto text-white mt-3 mb-3 main text-center row">
       <h3 class="text-white text-decoration-underline mb-5">New Product</h3>
@@ -64,7 +64,7 @@
           <div class="col-md-12">
             <label  for="productLine" class="form-label">Product Line</label>
             <select th:field="*{productLine.productline}" name="productline" id="productline" class="form-select">
-				<option th:each="p: ${productsline}" th:value="${p.productline}" ><span th:text="${p.productline}" ></span></option>
+				<option th:each="p: ${productsLine}" th:value="${p.productline}" ><span th:text="${p.productline}" ></span></option>
 								  
 			</select>
           </div>

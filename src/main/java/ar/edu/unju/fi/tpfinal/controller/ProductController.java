@@ -17,7 +17,8 @@ import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 import ar.edu.unju.fi.tpfinal.service.IProductService;
 @Controller
 public class ProductController {
-
+	@Autowired
+	private IProductLineService productLineService;
 	@Autowired
 	private IProductService productService;
 	private static final Log LOGGER=LogFactory.getLog(ProductLineController.class);
@@ -28,6 +29,7 @@ public class ProductController {
 		LOGGER.info("-METHOD : nuevoProductLinePage()");
 		LOGGER.info("-RESULT : VISUALIZA LA PAGINA new-product.html");
 		model.addAttribute("product", productService.getNewProduct());
+		model.addAttribute("productsLine",productLineService.getAllProductsLine());
 		return "new-product";
 	}
 	
@@ -36,8 +38,11 @@ public class ProductController {
 	public ModelAndView guardarProduc(@ModelAttribute("product") Product product) {
 		LOGGER.info("CONTROLLER : ProductController with / post method");
 		LOGGER.info("METHOD : guardarProductPage()");
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-products.html");		
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-products.html");
 		ModelAndView modelView = new ModelAndView("all-products");
+		ProductLine proLine= productLineService.getProductLineById(product.getProductLine().getProductline());
+		System.out.println("-------"+proLine);
+		product.setProductLine(proLine);
 		productService.guardarProduct(product);
 		modelView.addObject("products",productService.getAllProducts());
 		return modelView;
@@ -58,6 +63,7 @@ public class ProductController {
 		ModelAndView modelView = new ModelAndView("new-product");
 		Product product= productService.getProductById(id);
 		modelView.addObject("product", product);
+		modelView.addObject("productsLine",productLineService.getAllProductsLine());
 		return modelView;
 	}
 	
