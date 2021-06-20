@@ -51,7 +51,7 @@
 					<td th:text="${c.state}"></td>
 					<td th:text="${c.postalCode}"></td>
 					<td th:text="${c.Country}"></td>
-					<td th:text="${c.employee}"></td>
+					<td th:text="${c.employee.employeeNumber}"></td>
 					<td th:text="${c.creditLimit}"></td>
 					<td> 
 						<a th:href="@{/customer/edit/}+${c.customerNumber}" class="btn btn-success">Edit</a>

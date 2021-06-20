@@ -196,12 +196,12 @@ public class Employee {
 		this.user = user;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Employee [employeeNumber=" + employeeNumber + ", lastName=" + lastName + ", firstName=" + firstName
 				+ ", extension=" + extension + ", email=" + email + ", office=" + office + ", employee=" + employee
 				+ ", jobTitle=" + jobTitle + ", user=" + user + "]";
 	}
-	
+	*/
 	
 }

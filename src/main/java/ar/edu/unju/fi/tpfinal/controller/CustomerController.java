@@ -55,8 +55,8 @@ public class CustomerController {
 			if (unCustomer.getEmployee().getEmployeeNumber()==0) {
 				unCustomer.setEmployee(null);
 			} else {
-				Employee employee=employeeService.getEmployeeById(unCustomer.getEmployee().getEmployeeNumber());
-				unCustomer.setEmployee(employee);
+				Employee emp=employeeService.getEmployeeById(unCustomer.getEmployee().getEmployeeNumber());
+				unCustomer.setEmployee(emp);
 			}
 			customerService.guardarCustomer(unCustomer);
 			modelView.addObject("customers",customerService.getAllCustomers());
