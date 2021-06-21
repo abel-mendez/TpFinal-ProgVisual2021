@@ -84,6 +84,17 @@ public class EmployeeControlles {
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee.html");
 		return modelView;
 	}
+	
+	@GetMapping("/employee/all/account")
+	public ModelAndView getEmployeesAccountPage() {
+		LOGGER.info("CONTROLLER : EmployeeController with / employee/all/account get method");
+		LOGGER.info("METHOD : getEmployeesAccountPage()");		
+		ModelAndView modelView = new ModelAndView("all-employee-account");
+		modelView.addObject("employees",employeeService.getAllEmployees());
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee-account.html");
+		return modelView;
+	}
+
 
 	@GetMapping("/employee/edit/{id}")
 	public ModelAndView editEmployeePage(@PathVariable(value="id") int id) {
