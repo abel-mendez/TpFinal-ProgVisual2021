@@ -27,7 +27,7 @@ public class Usuario {
 	private String tipo;
 	
 	@Autowired
-	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Employee empleado;
 //CONSTRUCTORES
 	/**

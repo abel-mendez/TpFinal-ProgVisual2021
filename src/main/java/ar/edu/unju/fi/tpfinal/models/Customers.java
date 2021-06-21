@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -80,10 +81,6 @@ public class Customers {
 	@Valid
 	private Employee employee;
 	
-	@Autowired
-	@OneToOne(mappedBy = "customers",fetch = FetchType.LAZY)
-	@Valid
-	private Payment payment; 
 	
 	public Customers() {
 		// TODO Auto-generated constructor stub
@@ -271,19 +268,6 @@ public class Customers {
 		this.employee = employee;
 	}
 
-	/**
-	 * @return the payment
-	 */
-	public Payment getPayment() {
-		return payment;
-	}
-
-	/**
-	 * @param payment the payment to set
-	 */
-	public void setPayment(Payment payment) {
-		this.payment = payment;
-	}
 
 	/**
 	 * @param customerNumber
@@ -303,7 +287,7 @@ public class Customers {
 	 */
 	public Customers(int customerNumber, String customerName, String contactLastName, String contactFirstName,
 			String phone, String addresLine1, String addresLine2, String city, String state, int postalCode,
-			String country, Double creditLimit, Employee employee, Payment payment) {
+			String country, Double creditLimit, Employee employee) {
 		super();
 		this.customerNumber = customerNumber;
 		this.customerName = customerName;
@@ -318,7 +302,6 @@ public class Customers {
 		this.country = country;
 		this.creditLimit = creditLimit;
 		this.employee = employee;
-		this.payment = payment;
 	}
 
 	@Override
@@ -327,7 +310,7 @@ public class Customers {
 				+ contactLastName + ", contactFirstName=" + contactFirstName + ", phone=" + phone + ", addresLine1="
 				+ addresLine1 + ", addresLine2=" + addresLine2 + ", city=" + city + ", state=" + state + ", postalCode="
 				+ postalCode + ", country=" + country + ", creditLimit=" + creditLimit + ", employee=" + employee
-				+ ", payment=" + payment + "]";
+				+ "]";
 	}
 	
 	

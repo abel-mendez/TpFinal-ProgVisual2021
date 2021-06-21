@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,7 +33,7 @@ public class Payment {
 	private Double amount;
 	
 	@Autowired
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="customerNumber")
 	private Customers customers;
 	

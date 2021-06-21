@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import ch.qos.logback.core.subst.Token.Type;
+
 @Entity
 @Table(name="EMPLOYEES")
 @Component
@@ -32,12 +34,12 @@ public class Employee {
 	@Column
 	private String email;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@Autowired
 	@JoinColumn(name="officeCode")
 	private Office office;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@Autowired
 	@JoinColumn(name="reportsTo")
 	private Employee employee;

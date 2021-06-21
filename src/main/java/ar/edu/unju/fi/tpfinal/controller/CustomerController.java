@@ -79,7 +79,7 @@ public class CustomerController {
 		ModelAndView modelView = new ModelAndView("new-customer");
 		Customers customer= customerService.getCustomerById(id);
 		modelView.addObject("customer", customer);
-		modelView.addObject("employee",employeeService.getAllEmployees());
+		modelView.addObject("employees",employeeService.getAllEmployees());
 		return modelView;
 	}
 	

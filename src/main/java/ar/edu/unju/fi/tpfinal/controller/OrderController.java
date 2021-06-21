@@ -87,6 +87,7 @@ public class OrderController {
 		ModelAndView modelView = new ModelAndView("new-order");
 		Orders order= orderService.getOrderById(id);
 		modelView.addObject("order", order);
+		modelView.addObject("customers", customerService.getAllCustomers());	
 		return modelView;
 	}
 
