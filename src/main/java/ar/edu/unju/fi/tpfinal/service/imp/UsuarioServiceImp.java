@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tpfinal.service.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.models.Usuario;
@@ -18,15 +19,17 @@ public class UsuarioServiceImp implements IUsuarioService {
 
 	@Override
 	public void guardarUsuario(Usuario usuario) {
-		
+		String pw = usuario.getPassword();
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		usuario.setPassword(bCryptPasswordEncoder.encode(pw));
 		usuarioRepo.save(usuario);
 
 	}
 
 	@Override
-	public Usuario buscarPorUsuario(String usuario) {
-		Usuario us = usuarioRepo.findByUsuario(usuario);
-		return us;
+	public Usuario getUsuario(String usuario) {
+		
+		return null;
 	}
 
 }
