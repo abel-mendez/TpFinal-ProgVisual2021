@@ -25,7 +25,7 @@ public class ConfiguracionWeb extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers(resources).permitAll()
 				.antMatchers("/","/home","/index").permitAll()
-				//.antMatchers("/compra").hasAuthority("cliente")
+				.antMatchers("/office/**","/employee/**").hasAuthority("ADMINISTRADOR")
 				//.antMatchers("/producto").hasAuthority("administrador")
 				//.antMatchers("/cargarRegistro/","/buscarPersona","/cargarPersona", "/guardarCondicion", "/").hasAuthority("CLIENTE")
 				.anyRequest().authenticated()
