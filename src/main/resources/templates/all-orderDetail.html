@@ -37,8 +37,8 @@
 						<td th:text="${o.princeEach}"></td>
 						<td th:text="${o.orderLineNumber}"></td>
 						<td> 
-							<a th:href="@{/order/orderDetail/edit/}+${o.id}" class="btn btn-success">Edit</a>
-							<a th:href="@{/order/orderDetail/delete/}+${o.id}" class="btn btn-danger">Delete</a>
+							<a th:href="@{/order/orderDetail/edit/}+${o.id.productCode}+/+${o.id.orderNumber}" class="btn btn-success">Edit</a>
+							<a th:href="@{/order/orderDetail/delete/}+${o.id.productCode}+/+${o.id.orderNumber}" class="btn btn-danger">Delete</a>
 						 </td>
 					</tr>
 				  </tbody>

@@ -24,14 +24,14 @@
           <!-- Select Order -->
           <div class="col-md-6">
             <label  for="orderNumber" class="form-label">Order Number</label>
-            <select th:field="*{order.orderNumber}" name="orderNumber" id="orderNumber" class="form-select" >
+            <select th:field="*{id.orderNumber}" name="orderNumber" id="orderNumber" class="form-select" >
 				<option th:each="o: ${order}" th:value="${o.orderNumber}" ><span th:text="${o.orderNumber}" ></span></option>			  
 			</select>
           </div> 
           <!-- Select Product -->
           <div class="col-md-6">
             <label  for="productCode" class="form-label">Product Code</label>
-            <select th:field="*{product.productCode}" name="productCode" id="productCode" class="form-select" >
+            <select th:field="*{id.productCode}" name="productCode" id="productCode" class="form-select" >
 				<option th:each="p: ${product}" th:value="${p.productCode}" ><span th:text="${p.productCode}" ></span></option>			  
 			</select>
           </div> 
