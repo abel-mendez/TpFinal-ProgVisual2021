@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.models.Payment;
+import ar.edu.unju.fi.tpfinal.service.ICustomersService;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
 @Controller
@@ -21,6 +22,8 @@ public class PaymentsController {
 	
 	@Autowired
 	private IPaymentService paymentService;
+	@Autowired
+	private ICustomersService customerService;
 	
 	@GetMapping("/payments/new")
 	public String newPaymentsPage(Model model) {
@@ -28,6 +31,7 @@ public class PaymentsController {
 		LOGGER.info("METHOD : newPaymentsPage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA new-payment.html");
 		model.addAttribute("payment", paymentService.getPayment());
+		model.addAttribute("customer", customerService.getAllCustomers());
 		return "new-payment";
 	}
 	
@@ -57,6 +61,7 @@ public class PaymentsController {
 		ModelAndView modelView = new ModelAndView("new-payment");
 		Payment payment= paymentService.getPaymentById(id);
 		modelView.addObject("payment", payment);
+		modelView.addObject("customer", customerService.getAllCustomers());
 		return modelView;
 	}
 	
