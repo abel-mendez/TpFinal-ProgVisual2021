@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.tpfinal.models.Customers;
 import ar.edu.unju.fi.tpfinal.models.Payment;
+import ar.edu.unju.fi.tpfinal.models.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.ICustomersService;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
@@ -41,6 +43,8 @@ public class PaymentsController {
 		LOGGER.info("METHOD : guardarProductPage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-payments.html");		
 		ModelAndView modelView = new ModelAndView("all-payments");
+		Customers cust= customerService.getCustomerById(payment.getCustomers().getCustomerNumber());
+		payment.setCustomers(cust);
 		paymentService.guardarPayment(payment);
 		modelView.addObject("payments",paymentService.getAllPayments());
 		return modelView;

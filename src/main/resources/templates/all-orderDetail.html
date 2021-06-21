@@ -27,18 +27,19 @@
 				      <th scope="col">Quantity Ordered</th>
 				      <th scope="col">Price Each</th>
 				      <th scope="col">Order Line Number</th>
+				      <th scope="col">Actions</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				    <tr class="text-white" th:each="o: ${ordersDetail}" >
-						<td th:text="${o.id.productCode}"></td>
-						<td th:text="${o.id.orderNumber}"></td>
+						<td th:text="${o.id.productCode.productCode}"></td>
+						<td th:text="${o.id.orderNumber.orderNumber}"></td>
 						<td th:text="${o.quantityOrdered}"></td>
 						<td th:text="${o.princeEach}"></td>
 						<td th:text="${o.orderLineNumber}"></td>
 						<td> 
-							<a th:href="@{/order/orderDetail/edit/}+${o.id.productCode}+/+${o.id.orderNumber}" class="btn btn-success">Edit</a>
-							<a th:href="@{/order/orderDetail/delete/}+${o.id.productCode}+/+${o.id.orderNumber}" class="btn btn-danger">Delete</a>
+						  	<a th:href="@{/order/orderDetail/edit/}+${o.id.productCode.productCode}+'/'+${o.id.orderNumber.orderNumber}" class="btn btn-success">Edit</a>
+							<a th:href="@{/order/orderDetail/delete/}+${o.id.productCode.productCode}+'/'+${o.id.orderNumber.orderNumber}" class="btn btn-danger">Delete</a>
 						 </td>
 					</tr>
 				  </tbody>

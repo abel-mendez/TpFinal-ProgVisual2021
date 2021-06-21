@@ -13,7 +13,7 @@
 		<title>Payments</title>
 	</head>
 	<body class="body">
-		<header th:replace="/layout/header-order :: header-order"></header>
+		<header th:replace="/layout/header-customer :: header-customer"></header>
 		
 		<main class="w-75 m-auto mt-3 mb-3 main text-center row">
       	<h3 class="text-white mb-5 text-decoration-underline">All Payments</h3>
@@ -36,8 +36,8 @@
 						<td th:text="${p.paymentDate}"></td>
 						<td th:text="${p.amount}"></td>
 						<td> 
-							<a th:href="@{/payments/edit/}+${o.id}" class="btn btn-success">Edit</a>
-							<a th:href="@{/payments/delete/}+${o.id}" class="btn btn-danger">Delete</a>
+							<a th:href="@{/payments/edit/}+${p.checkNumber}" class="btn btn-success">Edit</a>
+							<a th:href="@{/payments/delete/}+${p.checkNumber}" class="btn btn-danger">Delete</a>
 						 </td>
 					</tr>
 				  </tbody>

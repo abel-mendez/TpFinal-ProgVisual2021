@@ -30,7 +30,7 @@ public class OrderDetailController {
 	IProductService productService;
 	private static final Log LOGGER= LogFactory.getLog(OrderDetailController.class);
 	
-	@GetMapping("/orderDetail/new")
+	@GetMapping("/order/orderDetail/new")
 	public String getOrderDetailPage(Model model) {
 		model.addAttribute("orderDetail", orderDetailService.getNewOrderDetail());
 		model.addAttribute("order", orderService.getAllOrders());
@@ -38,7 +38,7 @@ public class OrderDetailController {
 		return "new-orderdetails";
 	}
 	
-	@GetMapping("/orderDetail/save")
+	@GetMapping("/order/orderDetail/save")
 	public String saveOrderDetailPage(Model model, @RequestParam (name="id.orderNumber") int orderNumber,
 			 @RequestParam (name="id.productCode") String productCode, @RequestParam (name="quantityOrdered") int quantityOrdered,
 			 @RequestParam (name="princeEach") double princeEach, @RequestParam (name="orderLineNumber") int orderLineNumber) {
@@ -51,24 +51,24 @@ public class OrderDetailController {
 		orderDetailService.guardarOrderDetail(orderDetail);
 		
 		
-		model.addAttribute("orderdetail", orderDetailService.getAllOrderDetail());
+		model.addAttribute("ordersDetail", orderDetailService.getAllOrderDetail());
 		return "all-orderdetail";
 	}
 	
-	@GetMapping("/orderDetail/all")
+	@GetMapping("/order/orderDetail/all")
 	public ModelAndView getOrderDetailPage() {
 		LOGGER.info("CONTROLLER : OrderDetailController with / orderDetail/all get method");
 		LOGGER.info("METHOD : getOrderDetailPage()");		
 		ModelAndView modelView = new ModelAndView("all-orderDetail");
-		modelView.addObject("ordersDetail",orderService.getAllOrders());
+		modelView.addObject("ordersDetail",orderDetailService.getAllOrderDetail());
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-orderDetail.html");
 		return modelView;
 	}
 
-	@GetMapping("order/orderDetail/edit/{id.productCode}/{id.orderNumber}")
+	@GetMapping("/order/orderDetail/edit/{id.productCode}/{id.orderNumber}")
 	public ModelAndView editOrderPage(@PathVariable(value="id.productCode") String productCode,
 			@PathVariable(value = "id.orderNumber")int orderNumber) {
-		ModelAndView modelView = new ModelAndView("new-orderdetail");
+		ModelAndView modelView = new ModelAndView("new-orderdetails");
 		OrderDetailId id = new OrderDetailId(productService.getProductById(productCode), orderService.getOrderById(orderNumber));
 		modelView.addObject("orderDetail", orderDetailService.getOrderDetailById(id));
 		modelView.addObject("order", orderService.getAllOrders());
@@ -76,7 +76,7 @@ public class OrderDetailController {
 		return modelView;
 	}
 
-	@GetMapping("order/orderDetail/delete/{id.productCode}/{id.orderNumber}")
+	@GetMapping("/order/orderDetail/delete/{id.productCode}/{id.orderNumber}")
 	public ModelAndView deleteOrderPage(@PathVariable(value="id.productCode") String productCode,
 			@PathVariable(value = "id.orderNumber")int orderNumber) { 
 		

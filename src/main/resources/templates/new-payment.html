@@ -13,7 +13,7 @@
 		<title>Payments</title>
 	</head>
 	<body class="body">
-		<header th:replace="/layout/header-order :: header-order"></header>
+		<header th:replace="/layout/header-customer :: header-customer"></header>
 		
 		<main class="w-75 m-auto mt-3 mb-3 main text-center">
       <h3 class="text-white text-decoration-underline">New Payments</h3> <hr>
@@ -27,7 +27,7 @@
           <div class="col-md-6">
             <label  for="productCode" class="form-label">Customer Number</label>
             <select th:field="*{customers}" name="customerNumber" id="customerNumber" class="form-select" >
-				<option th:each="c: ${customer}" th:value="${c.customerNumber}" ><span th:text="${c.pcustomerNumber}" ></span></option>			  
+				<option th:each="c: ${customer}" th:value="${c.customerNumber}" ><span th:text="${c.customerNumber}" ></span></option>			  
 			</select>
           </div> 
           <!-- Order Detail -->
@@ -46,7 +46,7 @@
        
           <div class="col-12">
             <button type="submit" class="btn mt-2 btn-primary">
-              Save Order Details
+              Save Payment
             </button>
           </div>
         </form>

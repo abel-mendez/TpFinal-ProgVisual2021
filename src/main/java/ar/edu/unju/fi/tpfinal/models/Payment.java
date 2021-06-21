@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 @Entity
 @Table(name="PAYMENTS")
@@ -25,6 +26,7 @@ public class Payment {
 	@Column
 	private String checkNumber;
 	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date paymentDate;
 	@Column
 	private Double amount;
