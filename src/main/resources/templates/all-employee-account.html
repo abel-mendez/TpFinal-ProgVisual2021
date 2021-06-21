@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	    <link rel="stylesheet" th:href="@{/css/main.css}" />
+	    <link
+	      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	      rel="stylesheet"
+	      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	      crossorigin="anonymous"/>
+		<title>Employee</title>
+	</head>
+	<body class="body">
+		<header th:replace="/layout/header-employee :: header-employee"></header>
+		
+		<main class="w-75 m-auto mt-3 mb-3 main text-center row">
+      <h3 class="text-white mb-5 text-decoration-underline">All Employees</h3>
+      <div class="cont-form">
+        <div class="table-responsive">
+        	<table class="table table-hover">
+			  <thead>
+			    <tr class="text-white">
+			      <th scope="col">Employee Number </th>
+			      <th scope="col">Last Name</th>
+			      <th scope="col">First Name</th>
+			      <th scope="col">Job Title </th>
+			      <th scope="col">User id</th>
+			      <th scope="col">User Usuario</th>
+			      <th scope="col">User Tipo</th>
+			      <th scope="col">Actions</th>
+			      
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr class="text-white" th:each="e: ${employees}" >
+					<td th:text="${e.employeeNumber}"></td>
+					<td th:text="${e.lastName}"></td>
+					<td th:text="${e.firstName}"></td>
+					<td th:text="${e.jobTitle}"></td>
+					<td th:text="${e.user.id}"></td>
+					<td th:text="${e.user.usuario}"></td>
+					<td th:text="${e.user.tipo}"></td>
+					<td> 
+						<a th:href="@{/employee/edit/}+${e.employeeNumber}" class="btn btn-success">Edit</a>
+						<a th:href="@{/employee/delete/}+${e.employeeNumber}" class="btn btn-danger">Delete</a>
+					 </td>
+				</tr>
+			  </tbody>
+			</table>
+        </div>
+
+         
+          
+     
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+	
+	</body>
+</html>
