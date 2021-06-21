@@ -26,7 +26,7 @@ public class ManejadorAUTH implements AuthenticationSuccessHandler{
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
 		for (GrantedAuthority grantedAuthority : authorities) {
-			if (grantedAuthority.getAuthority().equals("EMPLOYEE")) {
+			if (grantedAuthority.getAuthority().equals("EMPLEADO")) {
 				userEmployee = true;
 				break;
 			} else {
