@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -66,6 +67,7 @@ public class Employee {
 	@Autowired
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="us_Id")
+	@Valid
 	private Usuario user;
 	
 	public Employee() {

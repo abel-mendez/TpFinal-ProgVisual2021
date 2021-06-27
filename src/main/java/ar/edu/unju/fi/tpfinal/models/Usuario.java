@@ -36,7 +36,6 @@ public class Usuario {
 	
 	@Autowired
 	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	@Valid
 	private Employee empleado;
 //CONSTRUCTORES
 	/**
