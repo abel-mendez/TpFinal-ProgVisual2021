@@ -18,12 +18,12 @@ public class TrabajoFinalProgVisualApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Usuario us= new Usuario();
+		/*Usuario us= new Usuario();
 		us.setPassword("admin");
 		us.setTipo("ADMINISTRADOR");
 		us.setUsuario("admin");
 		us.setId(Long.valueOf(4125));
-		usuarioService.guardarUsuario(us);
+		usuarioService.guardarUsuario(us);*/
 		
 	}
 }

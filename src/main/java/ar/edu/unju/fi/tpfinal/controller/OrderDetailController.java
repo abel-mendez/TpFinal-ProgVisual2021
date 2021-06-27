@@ -61,7 +61,7 @@ public class OrderDetailController {
 		if (result.hasErrors()) {
 			LOGGER.info("RESULT : VALIDACION");
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-orderdetails.html");
-			model.addAttribute("orderDetail", orderDetail);
+			model.addAttribute("orderDetail", orderDet);
 			model.addAttribute("order", orderService.getAllOrders());
 			model.addAttribute("product", productService.getAllProducts());	
 			return "new-orderdetails";

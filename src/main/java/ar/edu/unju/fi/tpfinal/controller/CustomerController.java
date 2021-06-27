@@ -22,12 +22,17 @@ import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 @Controller
 public class CustomerController {
 	
+	
 	@Autowired
 	private ICustomersService customerService;
 	private static final Log LOGGER=LogFactory.getLog(CustomerController.class);
 	@Autowired
 	private IEmployeeService employeeService;
 	
+	@GetMapping("/error")
+	public String errorMapping() {
+		return "index";
+	}
 	@GetMapping("/customer/new")
 	public String nuevoCustomerPage(Model model) {
 		LOGGER.info("-CONTROLLER : CustomerController with / get method");
