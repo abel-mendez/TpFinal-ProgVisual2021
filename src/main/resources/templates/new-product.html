@@ -25,18 +25,22 @@
         <div class="col-md-3">
             <label for="productCode" class="form-label">Product Code</label>
             <input th:field="*{productCode}" type="text" class="form-control" id="productCode" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('productCode')}" th:errors="*{productCode}" ></div>
           </div>
           <div class="col-md-3">
             <label for="productName" class="form-label">Product Name</label>
             <input th:field="*{productName}" type="text" class="form-control" id="productName" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" ></div>
           </div>
           <div class="col-md-3">
             <label for="productScale" class="form-label">Product Scale</label>
             <input th:field="*{productScale}" type="text" class="form-control" id="productScale" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('productScale')}" th:errors="*{productScale}" ></div>
           </div>
           <div class="col-md-3">
             <label for="productVendor" class="form-label">Product Vendor</label>
             <input th:field="*{productVendor}" type="text" class="form-control" id="productVendor" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('productVendor')}" th:errors="*{productVendor}" ></div>
           </div>
           <div class="col-12">
             <label for="productDescription" class="form-label">Product Description</label>
@@ -47,18 +51,22 @@
               id="productDescription"
               placeholder="Description . . . . "
             />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('productDescription')}" th:errors="*{productDescription}" ></div>
           </div>
           <div class="col-md-4">
             <label for="quantityInStock" class="form-label">Quantity in Stock</label>
             <input th:field="*{quantityInStock}" type="text" class="form-control" id="quantityInStock" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}" ></div>
           </div>
           <div class="col-md-4">
             <label for="buyPrice" class="form-label">Buy Price</label>
           	 <input th:field="*{buyPrice}" type="text" class="form-control" id="buyPrice" />
+          	 <div class=" alert alert-danger" th:if="${#fields.hasErrors('buyPrice')}" th:errors="*{buyPrice}" ></div>
           </div>
           <div class="col-md-4">
             <label for="msrp" class="form-label">MSRP</label>
             <input th:field="*{msrp}" type="text" class="form-control" id="msrp" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('msrp')}" th:errors="*{msrp}" ></div>
           </div>
            <!-- Select Product Line -->
           <div class="col-md-12">
@@ -67,6 +75,7 @@
 				<option th:each="p: ${productsLine}" th:value="${p.productline}" ><span th:text="${p.productline}" ></span></option>
 								  
 			</select>
+			<div class=" alert alert-danger" th:if="${#fields.hasErrors('productLine.productline')}" th:errors="*{productLine.productline}" ></div>
           </div>
           <div class="col-12">
             <button type="submit" class="btn mt-2 btn-primary">

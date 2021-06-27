@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -27,7 +28,7 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
+	
 	private int employeeNumber;
 	@Column
 	@NotBlank(message = "El campo no puede estar vacio")
@@ -57,7 +58,10 @@ public class Employee {
 	@JoinColumn(name="reportsTo")
 	private Employee employee;
 	@Column
+	@NotBlank(message = "El campo jobTitle no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String jobTitle;
+	
 	//USUARIO para login
 	@Autowired
 	@OneToOne(cascade = CascadeType.ALL)
