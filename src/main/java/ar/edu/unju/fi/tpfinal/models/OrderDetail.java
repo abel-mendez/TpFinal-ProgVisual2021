@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
@@ -28,10 +30,15 @@ public class OrderDetail implements Serializable{
 	@EmbeddedId
 	private OrderDetailId id;
 	@Column
+	@NotNull(message = "Debes introducir quantityOrdered")
+	@Min(value=1,message="minimo 1 digito")
 	private int quantityOrdered;
 	@Column
+	@NotNull(message = "El campo princeEach no puede estar vacio")
 	private double princeEach;
 	@Column
+	@NotNull(message = "Debes introducir orderLineNumber")
+	@Min(value=2,message="minimo 2 digito")
 	private int orderLineNumber;
 //CONSTRUCTORES
 	/**
