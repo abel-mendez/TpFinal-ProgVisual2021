@@ -72,8 +72,7 @@ public class EmployeeControlles {
 		user.setUsuario(usuario);
 		user.setPassword(password);
 		user.setTipo(tipo);
-		usuarioService.guardarUsuario(user);
-		emplo.setUser(user);
+
 	
 		if (result.hasErrors()){
 			LOGGER.info("RESULT : VALIDACION");
@@ -84,6 +83,8 @@ public class EmployeeControlles {
 			return "new-employee";
 		}else{
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee.html");
+			usuarioService.guardarUsuario(user);
+			emplo.setUser(user);
 			employeeService.guardarEmployee(emplo);
 			model.addAttribute("employees", employeeService.getAllEmployees());
 			return "all-employee";
