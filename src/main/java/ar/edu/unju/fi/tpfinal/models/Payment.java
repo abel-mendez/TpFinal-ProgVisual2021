@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,16 +27,20 @@ public class Payment {
 	@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
 	private String checkNumber;
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull(message = "El campo no puede estar vacio")
 	private Date paymentDate;
 	@Column
+	@NotNull(message = "El campo no puede estar vacio")
 	private Double amount;
 	
 	@Autowired
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="customerNumber")
+	@NotNull(message = "El campo no puede estar vacio")
 	private Customers customers;
 	
 public Payment() {

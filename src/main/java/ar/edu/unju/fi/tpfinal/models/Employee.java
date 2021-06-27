@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,19 +27,29 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private int employeeNumber;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String lastName;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String firstName;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String extension;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String email;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@Autowired
 	@JoinColumn(name="officeCode")
+	@NotNull(message ="El campo no puede estar vacio")
 	private Office office;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

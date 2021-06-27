@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,9 +41,16 @@ public class PaymentsController {
 	}
 	
 	@PostMapping("/payments/save")
-	public ModelAndView guardarPaymentsPage(@ModelAttribute("payment") Payment payment) {
+	public ModelAndView guardarPaymentsPage(@Valid @ModelAttribute("payment") Payment payment ,BindingResult result) {
 		LOGGER.info("CONTROLLER : PaymentsController with / post method");
 		LOGGER.info("METHOD : guardarProductPage()");
+		if (result.hasErrors()) {
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-payment.html");
+			ModelAndView model= new ModelAndView("new-payment");
+			model.addObject(payment);
+			model.addObject("customer", customerService.getAllCustomers());
+			return model;
+		}else {
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-payments.html");		
 		ModelAndView modelView = new ModelAndView("all-payments");
 		Customers cust= customerService.getCustomerById(payment.getCustomers().getCustomerNumber());
@@ -48,6 +58,7 @@ public class PaymentsController {
 		paymentService.guardarPayment(payment);
 		modelView.addObject("payments",paymentService.getAllPayments());
 		return modelView;
+		}
 	}
 	
 	@GetMapping("/payments/all")
