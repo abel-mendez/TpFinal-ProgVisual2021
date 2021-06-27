@@ -19,6 +19,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+/** Clase Orders
+ * clase entidad  esta tabla recibe el nombre de ORDERS
+ * contiene metodos accesores getters y setters de las variables miembros o atributos 
+ * @author ProgVisual2021
+ *
+ */
 @Entity
 @Table(name= "ORDERS")
 @Component("oneOrder")
@@ -53,19 +59,46 @@ public class Orders {
 	//@Valid
 	private Customers customers;
 	
+// <<<<<<---------CONSTRUCTORES-------->>>>>>
+	/**
+	 * Constructor por defecto o sin parametro
+	 */
 	public Orders() {
 		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * @return the orderNumber
+	
+	/** Constructor parametrizado o sobrecargado
+	 * 
+	 * @param orderNumber Identificaor (ID) de tipo entero (int) 
+	 * @param orderDate fecha de orden, tipo fecha(Date)
+	 * @param requiredDate  fecha requerida, tipo fecha (Date)
+	 * @param shippedDate   fecha de envio, tipo fecha(Date)
+	 * @param status estado de orden, tipo texto(String)
+	 * @param comments comentarios, tipo texto(String)
+	 * @param customers cliente, tipo cliente (Customer)
+	 */
+	public Orders(int orderNumber, Date orderDate, Date requiredDate, Date shippedDate, String status, String comments,
+			Customers customers) {
+		super();
+		this.orderNumber = orderNumber;
+		this.orderDate = orderDate;
+		this.requiredDate = requiredDate;
+		this.shippedDate = shippedDate;
+		this.status = status;
+		this.comments = comments;
+		this.customers = customers;
+	}
+	
+//<<<<--------Metodos Accesores SETERs Y GETERs-------->>>>
+	/** metodo accesor getter muestra lo q contiene la variable miembro
+	 * @return retorna orderNumber (int)
 	 */
 	public int getOrderNumber() {
 		return orderNumber;
 	}
 
-	/**
-	 * @param orderNumber the orderNumber to set
+	/**metodo accesor setter introduce datos a la variable miembro 
+	 * @param orderNumber de tipo entero (int)
 	 */
 	public void setOrderNumber(int orderNumber) {
 		this.orderNumber = orderNumber;
@@ -155,27 +188,7 @@ public class Orders {
 		this.customers = customers;
 	}
 
-	/**
-	 * @param orderNumber
-	 * @param orderDate
-	 * @param requiredDate
-	 * @param shippedDate
-	 * @param status
-	 * @param comments
-	 * @param customers
-	 */
-	public Orders(int orderNumber, Date orderDate, Date requiredDate, Date shippedDate, String status, String comments,
-			Customers customers) {
-		super();
-		this.orderNumber = orderNumber;
-		this.orderDate = orderDate;
-		this.requiredDate = requiredDate;
-		this.shippedDate = shippedDate;
-		this.status = status;
-		this.comments = comments;
-		this.customers = customers;
-	}
-
+//<<<<-------TO STRING-------->>>>
 	@Override
 	public String toString() {
 		return "Orders [orderNumber=" + orderNumber + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate
