@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -15,23 +17,39 @@ import org.springframework.stereotype.Component;
 public class Office {
 	@Id
 	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	@Column
 	private String officeCode;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String city;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String phone;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String addressLine1;
 	@Column
 	private String addressLine2;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String state;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String country;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String postalCode;
 	@Column
+	@NotBlank(message = "El campo no puede estar vacio")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String territory;
 	
 	public Office() {

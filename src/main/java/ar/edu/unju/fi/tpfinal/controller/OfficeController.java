@@ -2,11 +2,15 @@ package ar.edu.unju.fi.tpfinal.controller;
 
 import java.util.Optional;
 
+import javax.naming.Binding;
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +43,13 @@ public class OfficeController {
 	}
 	
 	@PostMapping("/office/save")
-	public ModelAndView guardarOfficePage(@ModelAttribute("office") Office oneOffice) {
+	public ModelAndView guardarOfficePage(@Valid @ModelAttribute("office") Office oneOffice, BindingResult result) {
+		if (result.hasErrors()) {
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-payment.html");
+			ModelAndView model= new ModelAndView("nuevo-office");
+			model.addObject(oneOffice);
+			return model;
+		}else {
 		LOGGER.info("CONTROLLER : OfficeController with / post method");
 		LOGGER.info("METHOD : guardarOfficePage()");
 		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");		
@@ -47,6 +57,7 @@ public class OfficeController {
 		officeService.guardarOffice(oneOffice);
 		modelView.addObject("offices",officeService.getAllOffices());
 		return modelView;
+		}
 	}
 	
 	@GetMapping("/office/all")
