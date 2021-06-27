@@ -30,6 +30,8 @@ public class ConfiguracionWeb extends WebSecurityConfigurerAdapter {
 				//.antMatchers("/cargarRegistro/","/buscarPersona","/cargarPersona", "/guardarCondicion", "/").hasAuthority("CLIENTE")
 				.anyRequest().authenticated()
 				.and()
+				.exceptionHandling().accessDeniedPage("/")
+				.and()
 			.formLogin()				
 				.loginPage("/login").permitAll()
 				.successHandler(autenticacion)				
