@@ -47,7 +47,7 @@ public class CustomerController {
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-customer.html");
 			ModelAndView modelVi= new ModelAndView("new-customer");
 			modelVi.addObject("customer", unCustomer);
-			modelVi.addObject("employees",customerService.getAllCustomers());
+			modelVi.addObject("employees",employeeService.getAllEmployees());
 			return modelVi;
 		}else {
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-customer.html");

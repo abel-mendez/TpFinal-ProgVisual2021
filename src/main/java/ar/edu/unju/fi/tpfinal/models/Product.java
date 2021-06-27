@@ -41,7 +41,6 @@ public class Product {
 	private ProductLine productLine;
 	@Column
 	@NotEmpty(message="Debes ingresar productScale")
-	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String productScale;
 	@Column
 	@NotEmpty(message="Debes ingresar productVendor")
