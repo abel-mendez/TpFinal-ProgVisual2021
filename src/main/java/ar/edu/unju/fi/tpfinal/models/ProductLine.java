@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -18,13 +20,19 @@ import org.springframework.stereotype.Component;
 public class ProductLine {
 	@Id
 	@Column(name = "productline")
+	@NotEmpty(message="Debes ingresar productline")
 	private String productline;
 	@Column
+	@NotEmpty(message="Debes ingresar textDescription")
+	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String textDescription;
 	@Column(columnDefinition = "MEDIUMTEXT")
+	@NotEmpty(message="Debes ingresar htmlDescription")
+	@Size(min = 5,max = 30, message="Minimo 5 y Maximo 30 caracteres")
 	private String htmlDescription;
 	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")
+	@NotEmpty(message="Debes ingresar image")
 	private String image;
 //CONSTRUCTORES
 	/**

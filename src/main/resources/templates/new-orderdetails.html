@@ -27,6 +27,7 @@
             <select th:field="*{id.orderNumber}" name="orderNumber" id="orderNumber" class="form-select" >
 				<option th:each="o: ${order}" th:value="${o.orderNumber}" ><span th:text="${o.orderNumber}" ></span></option>			  
 			</select>
+			<div class=" alert alert-danger" th:if="${#fields.hasErrors('id.orderNumber')}" th:errors="*{id.orderNumber}" ></div>
           </div> 
           <!-- Select Product -->
           <div class="col-md-6">
@@ -34,19 +35,23 @@
             <select th:field="*{id.productCode}" name="productCode" id="productCode" class="form-select" >
 				<option th:each="p: ${product}" th:value="${p.productCode}" ><span th:text="${p.productCode}" ></span></option>			  
 			</select>
+			<div class=" alert alert-danger" th:if="${#fields.hasErrors('id.productCode')}" th:errors="*{id.productCode}" ></div>
           </div> 
           <!-- Order Detail -->
           	<div class="col-md-4">
             	<label for="quantityOrdered" class="form-label">Quantity Ordered</label>
             	<input th:field="*{quantityOrdered}" type="number" class="form-control" id="quantityOrdered" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('quantityOrdered')}" th:errors="*{quantityOrdered}" ></div>
           	</div>
           	<div class="col-md-4">
             	<label for="princeEach" class="form-label">Prince Each</label>
             	<input th:field="*{princeEach}" type="number" class="form-control" id="princeEach" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('princeEach')}" th:errors="*{princeEach}" ></div>
           	</div>
           	<div class="col-md-4">
            		<label for="orderLineNumber" class="form-label">Order Line Number</label>
             	<input th:field="*{orderLineNumber}" type="number" class="form-control" id="orderLineNumber" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('orderLineNumber')}" th:errors="*{orderLineNumber}" ></div>
           	</div>
        
           <div class="col-12">

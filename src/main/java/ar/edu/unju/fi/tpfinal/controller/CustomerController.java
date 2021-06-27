@@ -29,10 +29,10 @@ public class CustomerController {
 	private IEmployeeService employeeService;
 	
 	@GetMapping("/customer/new")
-	public String nuevoProductPage(Model model) {
-		LOGGER.info("-CONTROLLER : ProductController with / get method");
-		LOGGER.info("-METHOD : nuevoProductLinePage()");
-		LOGGER.info("-RESULT : VISUALIZA LA PAGINA new-product.html");
+	public String nuevoCustomerPage(Model model) {
+		LOGGER.info("-CONTROLLER : CustomerController with / get method");
+		LOGGER.info("-METHOD : nuevoCustomerPage()");
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA new-customer.html");
 		model.addAttribute("customer", customerService.getCustomer());
 		model.addAttribute("employees",employeeService.getAllEmployees());
 		return "new-customer";

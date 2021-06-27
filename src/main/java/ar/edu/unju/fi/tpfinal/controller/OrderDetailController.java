@@ -1,11 +1,15 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,6 +36,9 @@ public class OrderDetailController {
 	
 	@GetMapping("/order/orderDetail/new")
 	public String getOrderDetailPage(Model model) {
+		LOGGER.info("-CONTROLLER : OrderDetailController with / get method");
+		LOGGER.info("-METHOD : getOrderDetailPage()");
+		LOGGER.info("-RESULT : VISUALIZA LA PAGINA new-orderdetails.html");
 		model.addAttribute("orderDetail", orderDetailService.getNewOrderDetail());
 		model.addAttribute("order", orderService.getAllOrders());
 		model.addAttribute("product", productService.getAllProducts());
@@ -39,20 +46,32 @@ public class OrderDetailController {
 	}
 	
 	@GetMapping("/order/orderDetail/save")
-	public String saveOrderDetailPage(Model model, @RequestParam (name="id.orderNumber") int orderNumber,
+	public String saveOrderDetailPage(@Valid @ModelAttribute("orderDetail") OrderDetail orderDet,BindingResult result, Model model, @RequestParam (name="id.orderNumber") int orderNumber,
 			 @RequestParam (name="id.productCode") String productCode, @RequestParam (name="quantityOrdered") int quantityOrdered,
 			 @RequestParam (name="princeEach") double princeEach, @RequestParam (name="orderLineNumber") int orderLineNumber) {
+		LOGGER.info("CONTROLLER : OrderDetailController with / get method");
+		LOGGER.info("METHOD : saveOrderDetailPage()");
 		OrderDetail orderDetail = new OrderDetail();
 		OrderDetailId orderDetailID= new OrderDetailId(productService.getProductById(productCode), orderService.getOrderById(orderNumber));
 		orderDetail.setId(orderDetailID);
 		orderDetail.setOrderLineNumber(orderLineNumber);
 		orderDetail.setPrinceEach(princeEach);
 		orderDetail.setQuantityOrdered(quantityOrdered);
-		orderDetailService.guardarOrderDetail(orderDetail);
 		
-		
-		model.addAttribute("ordersDetail", orderDetailService.getAllOrderDetail());
-		return "all-orderdetail";
+		if (result.hasErrors()) {
+			LOGGER.info("RESULT : VALIDACION");
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-orderdetails.html");
+			model.addAttribute("orderDetail", orderDetail);
+			model.addAttribute("order", orderService.getAllOrders());
+			model.addAttribute("product", productService.getAllProducts());	
+			return "new-orderdetails";
+		}else {
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-orderdetail.html");
+			orderDetailService.guardarOrderDetail(orderDetail);
+			model.addAttribute("ordersDetail", orderDetailService.getAllOrderDetail());
+			return "all-orderdetail";
+		}
+
 	}
 	
 	@GetMapping("/order/orderDetail/all")

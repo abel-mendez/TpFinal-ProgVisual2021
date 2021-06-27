@@ -24,25 +24,29 @@
       		<div class="col-md-4">
             	<label for="employeeNumber" class="form-label">Employee Number</label>
             	<input th:field="*{employeeNumber}" type="number" class="form-control" id="employeeNumber" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('employeeNumber')}" th:errors="*{employeeNumber}" ></div>
           	</div>
           	<div class="col-md-4">
             	<label for="lastName" class="form-label">Last Name</label>
             	<input th:field="*{lastName}" type="text" class="form-control" id="lastName" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" ></div>
           	</div>
           	<div class="col-md-4">
             	<label for="firstName" class="form-label">First Name</label>
             	<input th:field="*{firstName}" type="text" class="form-control" id="firstName" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" ></div>
           	</div>
           	<div class="col-md-4">
            		<label for="extension" class="form-label">Extension</label>
             	<input th:field="*{extension}" type="text" class="form-control" id="extension" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('extension')}" th:errors="*{extension}" ></div>
           	</div>
           	<div class="col-8">
             	<label for="email" class="form-label">Email</label>
             	<input th:field="*{email}"
               	type="email" class="form-control"
-              	id="email" placeholder="ejusuario@gmail.com"
-            />
+              	id="email" placeholder="ejusuario@gmail.com"/>
+              	<div class=" alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></div>
           </div>
           <!-- Select Office -->
           <div class="col-md-5">
@@ -51,6 +55,7 @@
 				<option th:each="o: ${offices}" th:value="${o.officeCode}" ><span th:text="${o.officeCode}" ></span></option>
 								  
 			</select>
+			<div class=" alert alert-danger" th:if="${#fields.hasErrors('office.officeCode')}" th:errors="*{office.officeCode}" ></div>
           </div>
           <!-- Select Report -->
           <div class="col-md-5">
@@ -61,12 +66,14 @@
 				<option th:each="e: ${employees}" th:value="${e.employeeNumber}" ><span th:text="${e.lastName} + ${e.firstName}"></option>
 								  
 			</select>
+			<div class=" alert alert-danger" th:if="${#fields.hasErrors('employee.employeeNumber')}" th:errors="*{employee.employeeNumber}" ></div>
           </div>
           
           
           <div class="col-md-2">
             <label for="jobTitle" class="form-label">Job Title</label>
             <input th:field="*{jobTitle}" type="text" class="form-control" id="jobTitle" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}" ></div>
           </div>
           
           <br>
@@ -78,14 +85,17 @@
           	<div class="col-md-6 offset-md-3" >
             	<label for="id" class="form-label">Usuario ID</label>
             	<input th:field="*{user.id}" type="text" class="form-control" id="id" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('user.id')}" th:errors="*{user.id}" ></div>
           	</div>
           	<div class="col-md-6 offset-md-3">
             	<label for="usuario" class="form-label">Usuario</label>
             	<input th:field="*{user.usuario}" type="text" class="form-control" id="usuario" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('user.usuario')}" th:errors="*{user.usuario}" ></div>
           	</div>
           	<div class="col-md-6 offset-md-3">
             	<label for="password" class="form-label">Password</label>
             	<input th:field="*{user.password}" type="text" class="form-control" id="password" />
+            	<div class=" alert alert-danger" th:if="${#fields.hasErrors('user.password')}" th:errors="*{user.password}" ></div>
           	</div>
           	<div class="col-md-6 offset-md-3" >
             	<label for="tipo" class="form-label">Tipo</label>
@@ -96,6 +106,7 @@
 					<option value="ENCARGADO"> Encargado</option>
 					<option value="EMPLEADO"> Empleado</option>
 				</select>
+				<div class=" alert alert-danger" th:if="${#fields.hasErrors('user.tipo')}" th:errors="*{user.tipo}" ></div>
           	</div>
 
           </div>

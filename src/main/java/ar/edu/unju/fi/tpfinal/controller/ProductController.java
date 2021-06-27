@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,17 +38,28 @@ public class ProductController {
 	
 
 	@PostMapping("/product/save")
-	public ModelAndView guardarProduc(@ModelAttribute("product") Product product) {
+	public ModelAndView guardarProduc(@Valid @ModelAttribute("product") Product product,BindingResult result) {
 		LOGGER.info("CONTROLLER : ProductController with / post method");
 		LOGGER.info("METHOD : guardarProductPage()");
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-products.html");
-		ModelAndView modelView = new ModelAndView("all-products");
-		ProductLine proLine= productLineService.getProductLineById(product.getProductLine().getProductline());
-		System.out.println("-------"+proLine);
-		product.setProductLine(proLine);
-		productService.guardarProduct(product);
-		modelView.addObject("products",productService.getAllProducts());
-		return modelView;
+		
+		
+		if (result.hasErrors()) {
+			LOGGER.info("RESULT : VALIDACION");
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-product.html");
+			ModelAndView modelVi = new ModelAndView("new-product");
+			modelVi.addObject("product", product);
+			modelVi.addObject("productsLine", productLineService.getAllProductsLine());
+			return modelVi;
+		}else {
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-products.html");
+			ModelAndView modelView = new ModelAndView("all-products");
+			ProductLine proLine= productLineService.getProductLineById(product.getProductLine().getProductline());
+			System.out.println("-------"+proLine);
+			product.setProductLine(proLine);
+			productService.guardarProduct(product);
+			modelView.addObject("products",productService.getAllProducts());
+			return modelView;
+		}
 	}
 	
 	@GetMapping("/product/all")

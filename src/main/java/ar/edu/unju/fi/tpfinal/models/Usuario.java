@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,16 +22,21 @@ import org.springframework.stereotype.Component;
 public class Usuario {
 	@Id
 	@Column(name="us_Id")
+	@NotNull(message = "Debes introducir id")
 	private Long id;
 	@Column
+	@NotBlank(message = "El campo usuario no puede estar vacio")
 	private String usuario;
 	@Column
+	@NotBlank(message = "El campo password no puede estar vacio")
 	private String password;
 	@Column
+	@NotBlank(message = "El campo tipo no puede estar vacio")
 	private String tipo;
 	
 	@Autowired
 	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@Valid
 	private Employee empleado;
 //CONSTRUCTORES
 	/**

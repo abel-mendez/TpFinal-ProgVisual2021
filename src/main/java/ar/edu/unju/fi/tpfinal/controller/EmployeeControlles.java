@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,20 +43,21 @@ public class EmployeeControlles {
 	}
 	
 	@GetMapping("/employee/save")
-	public String saveEmployeePage(Model model, @RequestParam (name="employeeNumber") String employeeNumber,
+	public String saveEmployeePage(@Valid @ModelAttribute("employee") Employee oneEmployee,BindingResult result,Model model, @RequestParam (name="employeeNumber") String employeeNumber,
 			 @RequestParam (name="lastName") String lastName, @RequestParam (name="firstName") String firstName,
 			 @RequestParam (name="extension") String extension, @RequestParam (name="email") String email,
 			 @RequestParam (name="office.officeCode") String officeCode, @RequestParam (name="employee.employeeNumber") String reportsTo,
 			 @RequestParam (name="jobTitle") String jobTitle,
 			 @RequestParam (name="user.id") Long id,@RequestParam (name="user.usuario") String usuario,
 			 @RequestParam (name="user.password") String password,@RequestParam (name="user.tipo") String tipo) {
+		LOGGER.info("CONTROLLER : EmployeeControlles with / get method");
+		LOGGER.info("METHOD : saveEmployeePage()");
 		Employee emplo = new Employee() ;
 		emplo.setEmployeeNumber(Integer.valueOf(employeeNumber));
 		emplo.setLastName(lastName);
 		emplo.setFirstName(firstName);
 		emplo.setExtension(extension);
 		emplo.setEmail(email);
-		
 		emplo.setOffice(this.officeService.getOfficeById(officeCode));
 		
 		if (Integer.valueOf(reportsTo)== 0) {
@@ -70,10 +74,22 @@ public class EmployeeControlles {
 		user.setTipo(tipo);
 		usuarioService.guardarUsuario(user);
 		emplo.setUser(user);
-		employeeService.guardarEmployee(emplo);
-		model.addAttribute("employees", employeeService.getAllEmployees());
-		return "all-employee";
+	
+		if (result.hasErrors()){
+			LOGGER.info("RESULT : VALIDACION");
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-employee.html");
+			model.addAttribute("employee", oneEmployee);
+			model.addAttribute("offices", officeService.getAllOffices());
+			model.addAttribute("employees", employeeService.getAllEmployees());
+			return "new-employee";
+		}else{
+			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-employee.html");
+			employeeService.guardarEmployee(emplo);
+			model.addAttribute("employees", employeeService.getAllEmployees());
+			return "all-employee";
+		}
 	}
+
 	
 	@GetMapping("/employee/all")
 	public ModelAndView getEmployeesPage() {
