@@ -18,6 +18,13 @@ import ar.edu.unju.fi.tpfinal.models.Product;
 import ar.edu.unju.fi.tpfinal.models.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 import ar.edu.unju.fi.tpfinal.service.IProductService;
+/**
+ * Clase ProductController
+ * Clase que responde a los eventos e invoca peticiones de Products
+ * y ademas es el intermediario entre la vista y el modelo .
+ * @author ProgVisual2021
+ *
+ */
 @Controller
 public class ProductController {
 	@Autowired
@@ -26,6 +33,12 @@ public class ProductController {
 	private IProductService productService;
 	private static final Log LOGGER=LogFactory.getLog(ProductLineController.class);
 	
+	/**
+	 * etodo que nos permite mostrar el formulario para ingresar un nuevo Product
+	 * donde por medio del controller mostramos el template new-product.html
+	 * @param model Parametro que se usa para agregar informacion al template,
+	 * @return retorna el template new-product.html
+	 */
 	@GetMapping("/product/new")
 	public String nuevoProductPage(Model model) {
 		LOGGER.info("-CONTROLLER : ProductController with / get method");
@@ -37,6 +50,16 @@ public class ProductController {
 	}
 	
 
+	/**
+	 * Metodo que sirve para capturar los valores o informacion ingresada en el template
+	 * new-product.html por medio del metodo POST, para mandarla y almacenarla a la base
+	 * de datos.
+	 * @param product paramero que trae datos de la vista un product
+	 * @param result parametro que caputra si existe algun error en la vista.
+	 * @return retorna la vista donde se almacenan todos los customers (all-product.html) o si 
+	 * se presenta algun error de validacion en la vista nos muestra nuevamente la 
+	 * vista new-product.html
+	 */
 	@PostMapping("/product/save")
 	public ModelAndView guardarProduc(@Valid @ModelAttribute("product") Product product,BindingResult result) {
 		LOGGER.info("CONTROLLER : ProductController with / post method");
@@ -62,6 +85,12 @@ public class ProductController {
 		}
 	}
 	
+	/**
+	 * Modelo que muestra la vista donde esta la tabla de todos los products, la vista se
+	 * llama all-products.html
+	 * @return retorna el modelo donde esta la vista all-products.html que muestra la lista 
+	 * de todos los products.
+	 */
 	@GetMapping("/product/all")
 	public ModelAndView getProductsPage() {
 		LOGGER.info("CONTROLLER : ProductController with / product/all get method");
@@ -72,6 +101,13 @@ public class ProductController {
 		return modelView;
 	}
 	
+	/**
+	 * Modelo principalmente que sirve para editar informacion del objeto (Product)
+	 * mostrando la vista del formulario (new-product.html) con valores que ya tiene 
+	 * en la base de datos para ser modificado a eleccion. 
+	 * @param id parametro que nos permite identificar el objeto a editar por medio del id
+	 * @returnretorna la vista new-product.html
+	 */
 	@GetMapping("/product/edit/{id}")
 	public ModelAndView editProductPage(@PathVariable(value="id") String id) {
 		ModelAndView modelView = new ModelAndView("new-product");
@@ -81,6 +117,12 @@ public class ProductController {
 		return modelView;
 	}
 	
+	/**
+	 * Metodo que permite eliminar un objeto de la vista (all-products.html)
+	 * atraves del id del objeto.
+	 * @param id parametro que permite identificar el objeto a eliminar
+	 * @return retorna la vista all-products.html
+	 */
 	@GetMapping("/product/delete/{id}")
 	public ModelAndView deleteProductPage(@PathVariable(value="id") String id) { 
 		ModelAndView modelView = new ModelAndView("redirect:/product/all");
