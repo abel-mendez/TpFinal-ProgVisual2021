@@ -51,7 +51,7 @@ public class Orders {
 	private String status;
 	@Column
 	@NotEmpty(message="Debes ingresar un comments")
-	@Size(min = 10,max = 100, message="Minimo 10 y Maximo 100 caracteres")
+	@Size(min = 3,max = 100, message="Minimo 3 y Maximo 100 caracteres")
 	private String comments;
 	@Autowired
 	@ManyToOne

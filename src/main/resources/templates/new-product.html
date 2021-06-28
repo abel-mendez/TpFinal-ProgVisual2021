@@ -11,6 +11,10 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 
     <title>Product</title>
   </head>
@@ -60,12 +64,12 @@
           </div>
           <div class="col-md-4">
             <label for="buyPrice" class="form-label">Buy Price</label>
-          	 <input th:field="*{buyPrice}" type="number" class="form-control" id="buyPrice" />
+          	 <input th:field="*{buyPrice}" type="number" step="0.01" class="form-control" id="buyPrice" />
           	 <div class=" alert alert-danger" th:if="${#fields.hasErrors('buyPrice')}" th:errors="*{buyPrice}" ></div>
           </div>
           <div class="col-md-4">
             <label for="msrp" class="form-label">MSRP</label>
-            <input th:field="*{msrp}" type="number" class="form-control" id="msrp" />
+            <input th:field="*{msrp}" type="number" step="0.01" class="form-control" id="msrp" />
             <div class=" alert alert-danger" th:if="${#fields.hasErrors('msrp')}" th:errors="*{msrp}" ></div>
           </div>
            <!-- Select Product Line -->

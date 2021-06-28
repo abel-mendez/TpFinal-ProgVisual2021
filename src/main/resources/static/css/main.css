@@ -21,7 +21,7 @@ body.body {
   color: inherit;
 }
 .main {
-  min-height: 100vh;
+  min-height: 96vh;
   display: flex;
   flex-direction:column;
   align-items: center;
@@ -81,4 +81,8 @@ body.body {
 .inputfile + label:hover {
     background-color: white;
     color:#0b5ed7;
+}
+.title{
+	font-family: 'Meie Script', cursive;
+	font-size: 70px;
 }

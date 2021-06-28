@@ -62,11 +62,11 @@ public class Customers {
 	private String addresLine2;
 	@Column
 	@NotEmpty(message="Debes ingresar city")
-	@Size(min = 5,max = 60, message="Minimo 5 y Maximo 60 caracteres")
+	@Size(min = 3,max = 60, message="Minimo 3 y Maximo 60 caracteres")
 	private String city;
 	@Column
-	@NotEmpty(message="Debes ingresar un status")
-	@Size(min = 5,max = 50, message="Minimo 5 y Maximo 50 caracteres")
+	@NotEmpty(message="Debes ingresar un state")
+	@Size(min = 3,max = 50, message="Minimo 3 y Maximo 50 caracteres")
 	private String state;
 	@Column
 	@NotNull(message = "Debes introducir postalCode")
@@ -74,7 +74,7 @@ public class Customers {
 	private int postalCode;
 	@Column
 	@NotEmpty(message="Debes ingresar country")
-	@Size(min = 5,max = 50, message="Minimo 5 y Maximo 50 caracteres")
+	@Size(min = 3,max = 50, message="Minimo 3 y Maximo 50 caracteres")
 	private String country;
 	@Column
 	@NotNull(message = "Debes introducir creditLimit")
