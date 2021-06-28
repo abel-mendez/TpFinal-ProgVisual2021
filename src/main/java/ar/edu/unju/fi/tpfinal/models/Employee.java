@@ -21,6 +21,12 @@ import org.springframework.stereotype.Component;
 
 import ch.qos.logback.core.subst.Token.Type;
 
+/**Clase Employee
+ * Clase entidad - Esta Tabla recibe el nombre EMPLOYEES
+ * contiene metodos accesores getters y setters de las variables miembros o atributos
+ * @author ProgVisual2021
+ *
+ */
 @Entity
 @Table(name="EMPLOYEES")
 @Component
@@ -68,117 +74,120 @@ public class Employee {
 	@JoinColumn(name="us_Id")
 	private Usuario user;
 	
+	/**
+	 * Constructor por defecto o sin parametro
+	 */
 	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @return the employeeNumbre
+	/**metodo accesor getter muestra lo q contiene la variable miembro
+	 * @return retorna employeeNumber (int)
 	 */
 	public int getEmployeeNumber() {
 		return employeeNumber;
 	}
 
-	/**
-	 * @param employeeNumbre the employeeNumbre to set
+	/**metodo accesor setter introduce datos a la variable miembro 
+	 * @param employeeNumbre de Tipo (int)
 	 */
 	public void setEmployeeNumber(int employeeNumber) {
 		this.employeeNumber = employeeNumber;
 	}
 
 	/**
-	 * @return the lastName
+	 * @return retorna lastName (String)
 	 */
 	public String getLastName() {
 		return lastName;
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * @param lastName de Tipo (String)
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
 	/**
-	 * @return the firstName
+	 * @return retorna firstName (String)
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * @param firstName de Tipo (String)
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
 	/**
-	 * @return the extension
+	 * @return retorna extension (String)
 	 */
 	public String getExtension() {
 		return extension;
 	}
 
 	/**
-	 * @param extension the extension to set
+	 * @param extension de Tipo (String)
 	 */
 	public void setExtension(String extension) {
 		this.extension = extension;
 	}
 
 	/**
-	 * @return the email
+	 * @return retorna email (String)
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email de Tipo (String)
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	/**
-	 * @return the office
+	 * @return retorna office (Office)
 	 */
 	public Office getOffice() {
 		return office;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office de Tipo (Office)
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @return the employee
+	 * @return retorna employee (Employee)
 	 */
 	public Employee getEmployee() {
 		return employee;
 	}
 
 	/**
-	 * @param employee the employee to set
+	 * @param employee de Tipo (Employee)
 	 */
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
 
 	/**
-	 * @return the jobTitle
+	 * @return retorna jobTitle (String)
 	 */
 	public String getJobTitle() {
 		return jobTitle;
 	}
 
 	/**
-	 * @param jobTitle the jobTitle to set
+	 * @param jobTitle de Tipo (String)
 	 */
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
@@ -207,10 +216,16 @@ public class Employee {
 		this.jobTitle = jobTitle;
 	}
 
+	/**
+	 * @return retorna (Usuario)
+	 */
 	public Usuario getUser() {
 		return user;
 	}
 
+	/**
+	 * @param user de Tipo (Usuario)
+	 */
 	public void setUser(Usuario user) {
 		this.user = user;
 	}
