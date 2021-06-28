@@ -104,7 +104,7 @@ public class Orders {
 		this.orderNumber = orderNumber;
 	}
 
-	/**
+	/** metodo accesor getter muestra lo q contiene la variable miembro
 	 * @return the orderDate
 	 */
 	public Date getOrderDate() {
@@ -112,13 +112,13 @@ public class Orders {
 	}
 
 	/**
-	 * @param orderDate the orderDate to set
+	 * @param orderDate de tipo Date
 	 */
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
 
-	/**
+	/** metodo accesor getter muestra lo q contiene la variable miembro
 	 * @return the requiredDate
 	 */
 	public Date getRequiredDate() {
@@ -126,13 +126,13 @@ public class Orders {
 	}
 
 	/**
-	 * @param requiredDate the requiredDate to set
+	 * @param requiredDate de tipo Date
 	 */
 	public void setRequiredDate(Date requiredDate) {
 		this.requiredDate = requiredDate;
 	}
 
-	/**
+	/** metodo accesor getter muestra lo q contiene la variable miembro
 	 * @return the shippedDate
 	 */
 	public Date getShippedDate() {
@@ -140,13 +140,13 @@ public class Orders {
 	}
 
 	/**
-	 * @param shippedDate the shippedDate to set
+	 * @param shippedDate de tipo Date
 	 */
 	public void setShippedDate(Date shippedDate) {
 		this.shippedDate = shippedDate;
 	}
 
-	/**
+	/** metodo accesor getter muestra lo q contiene la variable miembro
 	 * @return the status
 	 */
 	public String getStatus() {
@@ -154,13 +154,13 @@ public class Orders {
 	}
 
 	/**
-	 * @param status the status to set
+	 * @param status de tipo String
 	 */
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	/**
+	/** metodo accesor getter muestra lo q contiene la variable miembro
 	 * @return the comments
 	 */
 	public String getComments() {
@@ -168,13 +168,13 @@ public class Orders {
 	}
 
 	/**
-	 * @param comments the comments to set
+	 * @param comments de tipo String
 	 */
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
 
-	/**
+	/** metodo accesor getter muestra lo q contiene la variable miembro
 	 * @return the customers
 	 */
 	public Customers getCustomers() {
@@ -182,13 +182,16 @@ public class Orders {
 	}
 
 	/**
-	 * @param customers the customers to set
+	 * @param customers de tipo Customers
 	 */
 	public void setCustomers(Customers customers) {
 		this.customers = customers;
 	}
 
 //<<<<-------TO STRING-------->>>>
+	/**
+	 *Muestra la informacion completa de Order
+	 */
 	@Override
 	public String toString() {
 		return "Orders [orderNumber=" + orderNumber + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate

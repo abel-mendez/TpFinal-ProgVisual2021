@@ -21,6 +21,12 @@ import ar.edu.unju.fi.tpfinal.models.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.ICustomersService;
 import ar.edu.unju.fi.tpfinal.service.IOrdersService;
 
+/**Clase OrderController
+ * Clase que responde a los eventos e invoca peticiones de Order
+ *  ademas es el intermediario entre la vista y el modelo .
+ * @author ProgVisual2021
+ *
+ */
 @Controller
 public class OrderController {
 	
@@ -72,6 +78,11 @@ public class OrderController {
 		
 	}
 	
+	/**Modelo que muestra la vista donde esta la tabla de todos los orders, la vista se
+	 * llama all-order.html
+	 * @return retorna el modelo donde esta la vista all-order.html que muestra la lista 
+	 * de todos los orders.
+	 */
 	@GetMapping("/order/all")
 	public ModelAndView getOrdersPage() {
 		LOGGER.info("CONTROLLER : OrderController with / order/all get method");
@@ -82,6 +93,12 @@ public class OrderController {
 		return modelView;
 	}
 
+	/**Modelo principalmente que sirve para editar informacion del objeto (Order)
+	 * mostrando la vista del formulario (new-order.html) con valores que ya tiene 
+	 * en la base de datos para ser modificado a eleccion.
+	 * @param id parametro que nos permite identificar el objeto a editar por medio del id
+	 * @return retorna la vista new-order.html
+	 */
 	@GetMapping("/order/edit/{id}")
 	public ModelAndView editOrderPage(@PathVariable(value="id") int id) {
 		ModelAndView modelView = new ModelAndView("new-order");
@@ -91,6 +108,10 @@ public class OrderController {
 		return modelView;
 	}
 
+	/**
+	 * @param id parametro que permite identificar el objeto a eliminar
+	 * @return retorna la vista all-order.html
+	 */
 	@GetMapping("/order/delete/{id}")
 	public ModelAndView deleteOrderPage(@PathVariable(value="id") int id) { 
 		ModelAndView modelView = new ModelAndView("redirect:/order/all");
