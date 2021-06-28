@@ -19,7 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.models.Office;
 import ar.edu.unju.fi.tpfinal.service.IOfficeService;
-
+/**
+ * Clase OfficeController
+ * Clase que responde a los eventos e invoca peticiones de Office
+ * y ademas es el intermediario entre la vista y el modelo .
+ * @author ProgVisual2021
+ *
+ */
 @Controller
 public class OfficeController {
 	
@@ -33,6 +39,12 @@ public class OfficeController {
 		return "index";
 	}
 	
+	/**
+	 * Metodo que nos permite mostrar el formulario para ingresar una nueva Office
+	 * donde por medio del controller mostramos el template nuevo-office.html
+	 * @param model Parametro que se usa para agregar informacion al template,
+	 * @return retorna el template nuevo-office.html
+	 */
 	@GetMapping("/office/new")
 	public String nuevoOfficePage(Model model) {
 		LOGGER.info("CONTROLLER : OfficeController with / get method");
@@ -42,6 +54,15 @@ public class OfficeController {
 		return "nuevo-office";
 	}
 	
+	/**
+	 * Metodo que sirve para capturar los valores o informacion ingresada en el template
+	 * nuevo-office.html por medio del metodo POST, para mandarla y almacenarla a la base
+	 * de datos.
+	 * @param oneOffice parametro Modelo que captura lo ingresado en la vista.
+	 * @param result parametro que caputra si existe algun error en la vista.
+	 * @return retorna la vista donde se almacenan todos los customers (all-offices.html)
+	 * o si se presenta algun error de validacion muestra nuevamente la vista nuevo-office.html
+	 */
 	@PostMapping("/office/save")
 	public ModelAndView guardarOfficePage(@Valid @ModelAttribute("office") Office oneOffice, BindingResult result) {
 		if (result.hasErrors()) {
@@ -60,17 +81,29 @@ public class OfficeController {
 		}
 	}
 	
+	/**
+	 * Modelo que muestra la vista donde esta la tabla de todas las Offices, la vista se
+	 * llama all-offices.html
+	 * @return retorna el modelo donde esta la vista all-employee.html que muestra la lista 
+	 * de todos los employees.
+	 */
 	@GetMapping("/office/all")
-	//@ModelAttribute("office")Office oneOffice
 	public ModelAndView getOfficesPage() {
 		LOGGER.info("CONTROLLER : OfficeController with / office/listado get method");
 		LOGGER.info("METHOD : getOfficesPage()");		
 		ModelAndView modelView = new ModelAndView("all-offices");
 		modelView.addObject("offices",officeService.getAllOffices());
-		LOGGER.info("RESULT : VISUALIZA LA PAGINA offices.html");
+		LOGGER.info("RESULT : VISUALIZA LA PAGINA all-offices.html");
 		return modelView;
 	}
 	
+	/**
+	 * Modelo principalmente que sirve para editar informacion del objeto (Office)
+	 * mostrando la vista del formulario (nuevo-office.html) con valores que ya tiene 
+	 * en la base de datos para ser modificado a eleccion. 
+	 * @param id parametro que nos permite identificar el objeto a editar por medio del id
+	 * @return retorna la vista nuevo-office.html
+	 */
 	@GetMapping("/office/edit/{id}")
 	public ModelAndView editOfficePage(@PathVariable(value="id") String id) {
 		ModelAndView modelView = new ModelAndView("nuevo-office");
@@ -79,6 +112,12 @@ public class OfficeController {
 		return modelView;
 	}
 	
+	/**
+	 * Metodo que permite eliminar un objeto de la vista (all-offices.html)
+	 * atraves del id del objeto.
+	 * @param id parametro que permite identificar el objeto a eliminar
+	 * @return retorna la vista all-offices.html
+	 */
 	@GetMapping("/office/delete/{id}")
 	public ModelAndView deleteOfficePage(@PathVariable(value="id") String id) { 
 		ModelAndView modelView = new ModelAndView("redirect:/office/all");
