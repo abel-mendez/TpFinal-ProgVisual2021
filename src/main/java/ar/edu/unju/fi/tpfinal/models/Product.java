@@ -19,7 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * @author Diego
+ * Clase Product
+ *Clase entidad - Esta Tabla recibe el nombre PRODUCTS
+ *contiene metodos accesores getters y setters de las variables miembros o atributos
+ *
+ * @author ProgVisual2021
  *
  */
 @Entity
@@ -61,6 +65,7 @@ public class Product {
 	@NotNull(message = "El campo msrp no puede estar vacio")
 	@Min(value=1,message="minimo 1 digito")
 	private double msrp;
+	
 	//CONSTRUCTORES
 	/**
 	 * Constructor por defecto
@@ -69,18 +74,19 @@ public class Product {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	/**
-	 * Constructor parametrizado
+	 * Constructor parametrizado o sobre cargado
 	 * 
-	 * @param productCode
-	 * @param productName
-	 * @param productLine
-	 * @param productScale
-	 * @param productVendor
-	 * @param productDescription
-	 * @param quantityInStock
-	 * @param buyPrice
-	 * @param msrp
+	 * @param productCode tipo de dato String 
+	 * @param productName tipo de dato String
+	 * @param productLine tipo de dato ProductLine
+	 * @param productScale tipo de dato String
+	 * @param productVendor tipo de dato String
+	 * @param productDescription tipo de dato String 
+	 * @param quantityInStock tipo de dato entero(int)
+	 * @param buyPrice tipo de dato double 
+	 * @param msrp tipo de dato double
 	 */
 	public Product(String productCode, String productName, ProductLine productLine, String productScale,
 			String productVendor, String productDescription, int quantityInStock, double buyPrice, double msrp) {
@@ -95,62 +101,122 @@ public class Product {
 		this.buyPrice = buyPrice;
 		this.msrp = msrp;
 	}
+	
 	//SETERs y GETERs
+	
+	/**
+	 * @return muestra contenido de la variable ProductCode
+	 */
 	public String getProductCode() {
 		return productCode;
 	}
+	/**
+	 * @param productCode envia dato a la variable  y de tipo String
+	 */
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
 	}
+	/**
+	 * @return devuelve el contenido en la variable productName
+	 */
 	public String getProductName() {
 		return productName;
 	}
+	/**
+	 * @param productName  recibe tipo de dato String
+	 */
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+	/**
+	 * @return muestra la variable miembre Producto line  de tipo  ProductLine
+	 */
 	public ProductLine getProductLine() {
 		return productLine;
 	}
+	/**
+	 * @param recibe un obj 
+	 * productLine de tipo ProductLine 
+	 */ 
 	public void setProductLine(ProductLine productLine) {
 		this.productLine = productLine;
 	}
+	/**
+	 * @return retrona variable miembro de tipo String
+	 */
 	public String getProductScale() {
 		return productScale;
 	}
+	/**
+	 * @param productScale (String)
+	 */
 	public void setProductScale(String productScale) {
 		this.productScale = productScale;
 	}
+	/**
+	 * @return la variable productVendedor 
+	 */
 	public String getProductVendor() {
 		return productVendor;
 	}
+	/**
+	 * @param productVendor de tipo String
+	 */
 	public void setProductVendor(String productVendor) {
 		this.productVendor = productVendor;
 	}
+	/**
+	 * @return retorna de tipo string
+	 */
 	public String getProductDescription() {
 		return productDescription;
 	}
+	/**
+	 * @param productDescription de tipo String
+	 */
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
+	/**
+	 * @return retorna un entero int 
+	 */
 	public int getQuantityInStock() {
 		return quantityInStock;
 	}
+	/**
+	 * @param quantityInStock de tipo entero (int)
+	 */
 	public void setQuantityInStock(int quantityInStock) {
 		this.quantityInStock = quantityInStock;
 	}
+	/**
+	 * @return retorn variable miembre BuyPrice
+	 */
 	public double getBuyPrice() {
 		return buyPrice;
 	}
+	/**
+	 * @param buyPrice de tipo double
+	 */
 	public void setBuyPrice(double buyPrice) {
 		this.buyPrice = buyPrice;
 	}
+	/**
+	 * @return retorna variable miembre mrsp
+	 */
 	public double getMsrp() {
 		return msrp;
 	}
+	/**
+	 * @param msrp de tipo de dato double
+	 */
 	public void setMsrp(double msrp) {
 		this.msrp = msrp;
 	}
 	//TO STRING
+	/**
+	 * muestra la informacion completa de Product
+	 */
 	@Override
 	public String toString() {
 		return "Product [productCode=" + productCode + ", productName=" + productName + ", productLine=" + productLine
