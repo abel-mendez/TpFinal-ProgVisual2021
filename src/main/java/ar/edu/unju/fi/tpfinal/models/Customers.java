@@ -21,6 +21,12 @@ import javax.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**Clase Customers
+ *Clase entidad - Esta Tabla recibe el nombre CUSTOMERS
+ *contiene metodos accesores getters y setters de las variables miembros o atributos
+ * @author ProgVisual2021
+ *
+ */
 @Entity
 @Table(name="CUSTOMERS")
 @Component("oneCustomer")
@@ -82,187 +88,190 @@ public class Customers {
 	private Employee employee;
 	
 	
+	/**
+	 * Constructor por defecto o sin parametro
+	 */
 	public Customers() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @return the customerNumber
+	/**metodo accesor getter muestra lo q contiene la variable miembro
+	 * @return retorna customerNumber (int)
 	 */
 	public int getCustomerNumber() {
 		return customerNumber;
 	}
 
-	/**
-	 * @param customerNumber the customerNumber to set
+	/**metodo accesor setter introduce datos a la variable miembro 
+	 * @param customerNumber de tipo (int)
 	 */
 	public void setCustomerNumber(int customerNumber) {
 		this.customerNumber = customerNumber;
 	}
 
 	/**
-	 * @return the customerName
+	 * @return customerName (String)
 	 */
 	public String getCustomerName() {
 		return customerName;
 	}
 
 	/**
-	 * @param customerName the customerName to set
+	 * @param customerName de tipo (String)
 	 */
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
 
 	/**
-	 * @return the contactLastName
+	 * @return contactLastName (String)
 	 */
 	public String getContactLastName() {
 		return contactLastName;
 	}
 
 	/**
-	 * @param contactLastName the contactLastName to set
+	 * @param contactLastName de tipo (String)
 	 */
 	public void setContactLastName(String contactLastName) {
 		this.contactLastName = contactLastName;
 	}
 
 	/**
-	 * @return the contactFirstName
+	 * @return contactFirstName (String)
 	 */
 	public String getContactFirstName() {
 		return contactFirstName;
 	}
 
 	/**
-	 * @param contactFirstName the contactFirstName to set
+	 * @param contactFirstName de tipo (String)
 	 */
 	public void setContactFirstName(String contactFirstName) {
 		this.contactFirstName = contactFirstName;
 	}
 
 	/**
-	 * @return the phone
+	 * @return phone (String)
 	 */
 	public String getPhone() {
 		return phone;
 	}
 
 	/**
-	 * @param phone the phone to set
+	 * @param phone de tipo (String)
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
 	/**
-	 * @return the addresLine1
+	 * @return addresLine1 (String)
 	 */
 	public String getAddresLine1() {
 		return addresLine1;
 	}
 
 	/**
-	 * @param addresLine1 the addresLine1 to set
+	 * @param addresLine1 de tipo (String)
 	 */
 	public void setAddresLine1(String addresLine1) {
 		this.addresLine1 = addresLine1;
 	}
 
 	/**
-	 * @return the addresLine2
+	 * @return addresLine2 (String)
 	 */
 	public String getAddresLine2() {
 		return addresLine2;
 	}
 
 	/**
-	 * @param addresLine2 the addresLine2 to set
+	 * @param addresLine2 de tipo (String)
 	 */
 	public void setAddresLine2(String addresLine2) {
 		this.addresLine2 = addresLine2;
 	}
 
 	/**
-	 * @return the city
+	 * @return city (String)
 	 */
 	public String getCity() {
 		return city;
 	}
 
 	/**
-	 * @param city the city to set
+	 * @param city de tipo (String)
 	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
 	/**
-	 * @return the state
+	 * @return state (String)
 	 */
 	public String getState() {
 		return state;
 	}
 
 	/**
-	 * @param state the state to set
+	 * @param state de tipo (String)
 	 */
 	public void setState(String state) {
 		this.state = state;
 	}
 
 	/**
-	 * @return the postalCode
+	 * @return postalCode (int)
 	 */
 	public int getPostalCode() {
 		return postalCode;
 	}
 
 	/**
-	 * @param postalCode the postalCode to set
+	 * @param postalCode de tipo (int)
 	 */
 	public void setPostalCode(int postalCode) {
 		this.postalCode = postalCode;
 	}
 
 	/**
-	 * @return the country
+	 * @return country (String)
 	 */
 	public String getCountry() {
 		return country;
 	}
 
 	/**
-	 * @param country the country to set
+	 * @param country de tipo (String)
 	 */
 	public void setCountry(String country) {
 		this.country = country;
 	}
 
 	/**
-	 * @return the creditLimit
+	 * @return creditLimit (Double)
 	 */
 	public Double getCreditLimit() {
 		return creditLimit;
 	}
 
 	/**
-	 * @param creditLimit the creditLimit to set
+	 * @param creditLimit de tipo (Double)
 	 */
 	public void setCreditLimit(Double creditLimit) {
 		this.creditLimit = creditLimit;
 	}
 
 	/**
-	 * @return the employee
+	 * @return  employee
 	 */
 	public Employee getEmployee() {
 		return employee;
 	}
 
 	/**
-	 * @param employee the employee to set
+	 * @param employee de tipo (Employee)
 	 */
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
@@ -304,6 +313,9 @@ public class Customers {
 		this.employee = employee;
 	}
 
+	/**
+	 *Muestra la informacion completa del Customers
+	 */
 	@Override
 	public String toString() {
 		return "Customers [customerNumber=" + customerNumber + ", customerName=" + customerName + ", contactLastName="
