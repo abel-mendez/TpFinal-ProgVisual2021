@@ -128,7 +128,7 @@ public OrderDetail(OrderDetailId id, int quantityOrdered, double princeEach, int
 	//TO STRING
 
 	/**
-	 *Muestra la informacion completa de Office
+	 *Muestra la informacion completa de OrderDetail
 	 */
 	@Override
 	public String toString() {
