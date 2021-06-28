@@ -20,6 +20,12 @@ import ar.edu.unju.fi.tpfinal.models.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.ICustomersService;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
+/**Clase PaymentsController
+ * Clase que responde a los eventos e invoca peticiones de Payments
+ * y ademas es el intermediario entre la vista y el modelo 
+ * @author ProgVisual2021
+ *
+ */
 @Controller
 public class PaymentsController {
 	
@@ -30,6 +36,10 @@ public class PaymentsController {
 	@Autowired
 	private ICustomersService customerService;
 	
+	/** metodo que permite mostrar e inicializar el formulario 
+	 * @param model parametro utilizado para inyectar datos a la vista
+	 * @return retorna el template new-payment
+	 */
 	@GetMapping("/payments/new")
 	public String newPaymentsPage(Model model) {
 		LOGGER.info("CONTROLLER : PaymentController with / get method");
@@ -40,6 +50,10 @@ public class PaymentsController {
 		return "new-payment";
 	}
 	
+	/**Metodo para guardar valores ingresados en el teplate new-payment
+	 * @param payment recibe valores de la vista
+	 * @return retorna el template new-payment
+	 */
 	@PostMapping("/payments/save")
 	public ModelAndView guardarPaymentsPage(@Valid @ModelAttribute("payment") Payment payment ,BindingResult result) {
 		LOGGER.info("CONTROLLER : PaymentsController with / post method");
@@ -61,6 +75,9 @@ public class PaymentsController {
 		}
 	}
 	
+	/**metodo para mostrar el template all-paymentsy en el una coleccion de payments 
+	 * @return retorna el template all-payments
+	 */
 	@GetMapping("/payments/all")
 	public ModelAndView getPaymentsPage() {
 		LOGGER.info("CONTROLLER : PaymentsController with / payments/all get method");
@@ -71,6 +88,10 @@ public class PaymentsController {
 		return modelView;
 	}
 	
+	/**metodo que sirve para editar Payment  mostrando el template new-payment
+	 * @param id parametro q permite identificar el objeto
+	 * @return retorna template new-payment con los datos de un payment
+	 */
 	@GetMapping("/payments/edit/{id}")
 	public ModelAndView editPaymentsPage(@PathVariable(value="id") String id) {
 		ModelAndView modelView = new ModelAndView("new-payment");
@@ -80,6 +101,10 @@ public class PaymentsController {
 		return modelView;
 	}
 	
+	/**Metodo de eliminacion de un obj payment
+	 * @param id parametro que permite identificar el objeto q se eliminara
+	 * @return retorna la pagina all.payment
+	 */
 	@GetMapping("/payments/delete/{id}")
 	public ModelAndView deletePaymentsPage(@PathVariable(value="id") String id) { 
 		ModelAndView modelView = new ModelAndView("redirect:/payments/all");
