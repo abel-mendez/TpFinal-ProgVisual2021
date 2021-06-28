@@ -65,14 +65,14 @@ public class Office {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
+	/**metodo accesor getter muestra lo q contiene la variable miembro
 	 * @return retorna officeCode (String)
 	 */
 	public String getOfficeCode() {
 		return officeCode;
 	}
 
-	/**
+	/**metodo accesor setter introduce datos a la variable miembro
 	 * @param officeCode de Tipo (String)
 	 */
 	public void setOfficeCode(String officeCode) {

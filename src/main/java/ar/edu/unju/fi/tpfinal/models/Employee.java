@@ -193,7 +193,7 @@ public class Employee {
 		this.jobTitle = jobTitle;
 	}
 
-	/**
+	/**Constructor parametrizado o sobrecargado
 	 * @param employeeNumbre
 	 * @param lastName
 	 * @param firstName

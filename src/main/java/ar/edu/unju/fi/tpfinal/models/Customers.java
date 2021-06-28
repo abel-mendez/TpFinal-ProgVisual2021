@@ -278,7 +278,7 @@ public class Customers {
 	}
 
 
-	/**
+	/**Constructor parametrizado o sobrecargado
 	 * @param customerNumber
 	 * @param customerName
 	 * @param contactLastName
