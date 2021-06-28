@@ -57,7 +57,9 @@ public class CustomerController {
 	 * de datos.
 	 * @param unCustomer parametro Modelo que captura lo ingresado en la vista.
 	 * @param result parametro que caputra si existe algun error en la vista.
-	 * @return retorna la vista donde se almacenan todos los customers (all-customer.html)
+	 * @return retorna la vista donde se almacenan todos los customers (all-customer.html) o si 
+	 * se presenta algun error de validacion en la vista nos muestra nuevamente la 
+	 * vista new-customer.html
 	 */
 	@PostMapping("/customer/save")
 	public ModelAndView guardarCustomer(@Valid @ModelAttribute("customer")Customers unCustomer,BindingResult result) {

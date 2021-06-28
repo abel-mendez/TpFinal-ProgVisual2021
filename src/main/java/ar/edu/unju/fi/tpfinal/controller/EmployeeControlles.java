@@ -57,7 +57,7 @@ public class EmployeeControlles {
 	/**
 	 * Metodo que sirve para capturar los valores o informacion ingresada en el template
 	 * new-employee.html por medio del metodo GET, para mandarla y almacenarla a la base
-	 * de datos.
+	 * de datos y ademas crear el objeto usuario para para employee.
 	 * @param oneEmployee parametro Modelo que captura lo ingresado en la vista.
 	 * @param result parametro que caputra si existe algun error en la vista.
 	 * @param model parametro que caputra los valores ingresados en la vista para devolver 
@@ -76,7 +76,9 @@ public class EmployeeControlles {
 	 * @param usuario
 	 * @param password
 	 * @param tipo
-	 * @return retorna la vista donde se almacenan todos los Employee (all-employee.html)
+	 * @return retorna la vista donde se almacenan todos los Employee (all-employee.html) o 
+	 * si se presenta algun error de validacion en la vista nos muestra nuevamente la vista
+	 * new-employee.html
 	 */
 	@GetMapping("/employee/save")
 	public String saveEmployeePage(@Valid @ModelAttribute("employee") Employee oneEmployee,BindingResult result,Model model, @RequestParam (name="employeeNumber") String employeeNumber,
