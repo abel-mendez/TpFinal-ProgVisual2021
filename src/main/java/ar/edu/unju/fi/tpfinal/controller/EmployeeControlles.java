@@ -20,7 +20,13 @@ import ar.edu.unju.fi.tpfinal.models.Usuario;
 import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 import ar.edu.unju.fi.tpfinal.service.IOfficeService;
 import ar.edu.unju.fi.tpfinal.service.IUsuarioService;
-
+/**
+ * Clase EmployeeController
+ * Clase que responde a los eventos e invoca peticiones de Employee
+ * y ademas es el intermediario entre la vista y el modelo .
+ * @author ProgVisual2021
+ *
+ */
 @Controller
 public class EmployeeControlles {
 	@Autowired
@@ -31,6 +37,12 @@ public class EmployeeControlles {
 	@Autowired
 	private IUsuarioService usuarioService;
 	
+	/**
+	 * Metodo que nos permite mostrar el formulario para ingresar un nuevo Employee
+	 * donde por medio del controller mostramos el template new-employee.html
+	 * @param model Parametro que se usa para agregar informacion al template,
+	 * @return retorna el template new-employee.html
+	 */
 	@GetMapping("/employee/new")
 	public String newEmployeePage(Model model) {
 		LOGGER.info("CONTROLLER : EmployeeController with / get method");
@@ -42,6 +54,30 @@ public class EmployeeControlles {
 		return "new-employee";
 	}
 	
+	/**
+	 * Metodo que sirve para capturar los valores o informacion ingresada en el template
+	 * new-employee.html por medio del metodo GET, para mandarla y almacenarla a la base
+	 * de datos.
+	 * @param oneEmployee parametro Modelo que captura lo ingresado en la vista.
+	 * @param result parametro que caputra si existe algun error en la vista.
+	 * @param model parametro que caputra los valores ingresados en la vista para devolver 
+	 * los valores cargados en caso de que ocurra un validacion.
+	 * Atributos de la clase employee que sirven para asignar los valores manualmente. 
+	 * @param employeeNumber
+	 * @param lastName
+	 * @param firstName
+	 * @param extension
+	 * @param email
+	 * @param officeCode
+	 * @param reportsTo
+	 * @param jobTitle
+	 * Atributos de la clase Usuario que sirven para asignar los valores manualmente. 
+	 * @param id
+	 * @param usuario
+	 * @param password
+	 * @param tipo
+	 * @return retorna la vista donde se almacenan todos los Employee (all-employee.html)
+	 */
 	@GetMapping("/employee/save")
 	public String saveEmployeePage(@Valid @ModelAttribute("employee") Employee oneEmployee,BindingResult result,Model model, @RequestParam (name="employeeNumber") String employeeNumber,
 			 @RequestParam (name="lastName") String lastName, @RequestParam (name="firstName") String firstName,
@@ -92,6 +128,12 @@ public class EmployeeControlles {
 	}
 
 	
+	/**
+	 * Modelo que muestra la vista donde esta la tabla de todos los employees, la vista se
+	 * llama all-employee.html
+	 * @return retorna el modelo donde esta la vista all-employee.html que muestra la lista 
+	 * de todos los employees.
+	 */
 	@GetMapping("/employee/all")
 	public ModelAndView getEmployeesPage() {
 		LOGGER.info("CONTROLLER : EmployeeController with / employee/all get method");
@@ -102,6 +144,12 @@ public class EmployeeControlles {
 		return modelView;
 	}
 	
+	/**
+	 * Modelo que muestra la vista donde esta la tabla los employees con sus Usuarios, la vista se
+	 * llama all-employee-account.html
+	 * @return retorna el modelo donde esta la vista all-employee-account.html que muestra la lista 
+	 * de los empleados con sus Usuarios.
+	 */
 	@GetMapping("/employee/all/account")
 	public ModelAndView getEmployeesAccountPage() {
 		LOGGER.info("CONTROLLER : EmployeeController with / employee/all/account get method");
@@ -113,6 +161,13 @@ public class EmployeeControlles {
 	}
 
 
+	/**
+	 * Modelo principalmente que sirve para editar informacion del objeto (Employee)
+	 * mostrando la vista del formulario (new-employee.html) con valores que ya tiene 
+	 * en la base de datos para ser modificado a eleccion. 
+	 * @param id parametro que nos permite identificar el objeto a editar por medio del id
+	 * @return retorna la vista new-employee.html
+	 */
 	@GetMapping("/employee/edit/{id}")
 	public ModelAndView editEmployeePage(@PathVariable(value="id") int id) {
 		ModelAndView modelView = new ModelAndView("new-employee");
@@ -123,6 +178,12 @@ public class EmployeeControlles {
 		return modelView;
 	}
 
+	/**
+	 * Metodo que permite eliminar un objeto de la vista (all-employee.html)
+	 * atraves del id del objeto.
+	 * @param id parametro que permite identificar el objeto a eliminar
+	 * @return retorna la vista all-employee.html
+	 */
 	@GetMapping("/employee/delete/{id}")
 	public ModelAndView deleteEmployeePage(@PathVariable(value="id") int id) { 
 		ModelAndView modelView = new ModelAndView("redirect:/employee/all");

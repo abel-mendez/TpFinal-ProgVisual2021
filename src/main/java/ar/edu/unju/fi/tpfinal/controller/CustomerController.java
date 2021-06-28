@@ -19,6 +19,13 @@ import ar.edu.unju.fi.tpfinal.models.Employee;
 import ar.edu.unju.fi.tpfinal.service.ICustomersService;
 import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 
+/**
+ * Clase CustomerController
+ * Clase que responde a los eventos e invoca peticiones de Customers
+ * y ademas es el intermediario entre la vista y el modelo .
+ * @author ProgVisual2021
+ *
+ */
 @Controller
 public class CustomerController {
 	
@@ -28,6 +35,12 @@ public class CustomerController {
 	@Autowired
 	private IEmployeeService employeeService;
 	
+	/**
+	 * Metodo que nos permite mostrar el formulario para ingresar un nuevo Customers
+	 * donde por medio del controller mostramos el template new-customer.html
+	 * @param model Parametro que se usa para agregar informacion al template,
+	 * @return retorna el template new-customer.html
+	 */
 	@GetMapping("/customer/new")
 	public String nuevoCustomerPage(Model model) {
 		LOGGER.info("-CONTROLLER : CustomerController with / get method");
@@ -38,6 +51,14 @@ public class CustomerController {
 		return "new-customer";
 	}
 	
+	/**
+	 * Metodo que sirve para capturar los valores o informacion ingresada en el template
+	 * new-customer.html por medio del metodo POST, para mandarla y almacenarla a la base
+	 * de datos.
+	 * @param unCustomer parametro Modelo que captura lo ingresado en la vista.
+	 * @param result parametro que caputra si existe algun error en la vista.
+	 * @return retorna la vista donde se almacenan todos los customers (all-customer.html)
+	 */
 	@PostMapping("/customer/save")
 	public ModelAndView guardarCustomer(@Valid @ModelAttribute("customer")Customers unCustomer,BindingResult result) {
 		LOGGER.info("CONTROLLER : customerController with / post method");
@@ -64,6 +85,12 @@ public class CustomerController {
 		}
 	}
 	
+	/**
+	 * Modelo que muestra la vista donde esta la tabla de todos los customers, la vista se
+	 * llama all-customers.html
+	 * @return retorna el modelo donde esta la vista all-customer.html que muestra la lista 
+	 * de todos los customers.
+	 */
 	@GetMapping("/customer/all")
 	public ModelAndView getCustomersPage() {
 		LOGGER.info("CONTROLLER : CustomerController with / product/all get method");
@@ -74,6 +101,13 @@ public class CustomerController {
 		return modelView;
 	}
 	
+	/**
+	 * Modelo principalmente que sirve para editar informacion del objeto (Customer)
+	 * mostrando la vista del formulario (new-customer.html) con valores que ya tiene 
+	 * en la base de datos para ser modificado a eleccion. 
+	 * @param id parametro que nos permite identificar el objeto a editar por medio del id
+	 * @return retorna la vista new-customer.html
+	 */
 	@GetMapping("/customer/edit/{id}")
 	public ModelAndView editCustomerPage(@PathVariable(value="id") int id) {
 		ModelAndView modelView = new ModelAndView("new-customer");
@@ -83,6 +117,12 @@ public class CustomerController {
 		return modelView;
 	}
 	
+	/**
+	 * Metodo que permite eliminar un objeto de la vista (all-customer.html)
+	 * atraves del id del objeto.
+	 * @param id parametro que permite identificar el objeto a eliminar
+	 * @return retorna la vista all-customer.html
+	 */
 	@GetMapping("/customer/delete/{id}")
 	public ModelAndView deleteCustomerPage(@PathVariable(value="id") int id) { 
 		ModelAndView modelView = new ModelAndView("redirect:/customer/all");
