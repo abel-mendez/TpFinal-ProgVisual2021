@@ -106,9 +106,9 @@
             	<label for="tipo" class="form-label">Tipo</label>
             	<select name="tipo" class="form-control "id="tipo" th:field="*{user.tipo}">
 					<option value="" selected >--Seleccione opcion--</option>
-					<option value="Jefe" style="text-align:justify;"> Jefe </option>
+					<option value="ADMINISTRADOR" style="text-align:justify;"> Jefe </option>
 					<option value="ADMINISTRADOR"> Administrador </option>
-					<option value="ENCARGADO"> Encargado</option>
+					<option value="ADMINISTRADOR"> Encargado</option>
 					<option value="EMPLEADO"> Empleado</option>
 				</select>
 				<div class=" alert alert-danger" th:if="${#fields.hasErrors('user.tipo')}" th:errors="*{user.tipo}" ></div>
