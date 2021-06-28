@@ -11,6 +11,12 @@ import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
+/**Clase Office
+ *Clase entidad - Esta Tabla recibe el nombre OFFICES
+ *contiene metodos accesores getters y setters de las variables miembros o atributos
+ * @author ProgVisual2021
+ *
+ */
 @Entity
 @Table(name="OFFICES")
 @Component
@@ -52,137 +58,140 @@ public class Office {
 	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String territory;
 	
+	/**
+	 * Constructor por defecto o sin parametro
+	 */
 	public Office() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @return the officeCode
+	 * @return retorna officeCode (String)
 	 */
 	public String getOfficeCode() {
 		return officeCode;
 	}
 
 	/**
-	 * @param officeCode the officeCode to set
+	 * @param officeCode de Tipo (String)
 	 */
 	public void setOfficeCode(String officeCode) {
 		this.officeCode = officeCode;
 	}
 
 	/**
-	 * @return the city
+	 * @return retorna city (String)
 	 */
 	public String getCity() {
 		return city;
 	}
 
 	/**
-	 * @param city the city to set
+	 * @param city de Tipo (String)
 	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
 	/**
-	 * @return the phone
+	 * @return retorna phone (String)
 	 */
 	public String getPhone() {
 		return phone;
 	}
 
 	/**
-	 * @param phone the phone to set
+	 * @param phone de Tipo (String)
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
 	/**
-	 * @return the addressLine1
+	 * @return retorna addressLine1 (String)
 	 */
 	public String getAddressLine1() {
 		return addressLine1;
 	}
 
 	/**
-	 * @param addressLine1 the addressLine1 to set
+	 * @param addressLine1 de Tipo (String)
 	 */
 	public void setAddressLine1(String addressLine1) {
 		this.addressLine1 = addressLine1;
 	}
 
 	/**
-	 * @return the addressLine2
+	 * @return retorna addressLine2 (String)
 	 */
 	public String getAddressLine2() {
 		return addressLine2;
 	}
 
 	/**
-	 * @param addressLine2 the addressLine2 to set
+	 * @param addressLine2 de Tipo (String)
 	 */
 	public void setAddressLine2(String addressLine2) {
 		this.addressLine2 = addressLine2;
 	}
 
 	/**
-	 * @return the state
+	 * @return retorna state (String)
 	 */
 	public String getState() {
 		return state;
 	}
 
 	/**
-	 * @param state the state to set
+	 * @param state de Tipo (String)
 	 */
 	public void setState(String state) {
 		this.state = state;
 	}
 
 	/**
-	 * @return the country
+	 * @return retorna country (String)
 	 */
 	public String getCountry() {
 		return country;
 	}
 
 	/**
-	 * @param country the country to set
+	 * @param country de Tipo (String)
 	 */
 	public void setCountry(String country) {
 		this.country = country;
 	}
 
 	/**
-	 * @return the postalCode
+	 * @return retorna postalCode (String)
 	 */
 	public String getPostalCode() {
 		return postalCode;
 	}
 
 	/**
-	 * @param postalCode the postalCode to set
+	 * @param postalCode de Tipo (String) 
 	 */
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 
 	/**
-	 * @return the territory
+	 * @return retorna territory (String)
 	 */
 	public String getTerritory() {
 		return territory;
 	}
 
 	/**
-	 * @param territory the territory to set
+	 * @param territory de Tipo (String)
 	 */
 	public void setTerritory(String territory) {
 		this.territory = territory;
 	}
 
-	/**
+	/**Constructor parametrizado o sobrecargado
 	 * @param officeCode
 	 * @param city
 	 * @param phone
@@ -207,6 +216,9 @@ public class Office {
 		this.territory = territory;
 	}
 
+	/**
+	 *Muestra la informacion completa de Office
+	 */
 	@Override
 	public String toString() {
 		return "Office [officeCode=" + officeCode + ", city=" + city + ", phone=" + phone + ", addressLine1="
