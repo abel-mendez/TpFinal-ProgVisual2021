@@ -19,6 +19,12 @@ import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+/**Clase Payment
+ *Clase entidad - Esta Tabla recibe el nombre PAYMENTS
+ *contiene metodos accesores getters y setters de las variables miembros o atributos
+ * @author ProgVisual2021
+ *
+ */
 @Entity
 @Table(name="PAYMENTS")
 @Component
@@ -42,80 +48,85 @@ public class Payment {
 	@JoinColumn(name="customerNumber")
 	@NotNull(message = "El campo no puede estar vacio")
 	private Customers customers;
-	
+//<<<<---------CONSTRUCTORES-------->>>>	
+/**
+ * Constructor por defecto o sin parametros
+ */
 public Payment() {
 	// TODO Auto-generated constructor stub
 }
 
-/**
- * @return the checkNumber
+/** Constructor Parametrizado o sobrecargado
+ * @param checkNumber tipo de dato String
+ * @param paymentDate tipo de dato Date
+ * @param amount tipo de dato Doube
+ * @param customers tipo de dato Customer
  */
-public String getCheckNumber() {
-	return checkNumber;
-}
-
-/**
- * @param checkNumber the checkNumber to set
- */
-public void setCheckNumber(String checkNumber) {
-	this.checkNumber = checkNumber;
-}
-
-/**
- * @return the paymentDate
- */
-public Date getPaymentDate() {
-	return paymentDate;
-}
-
-/**
- * @param paymentDate the paymentDate to set
- */
-public void setPaymentDate(Date paymentDate) {
-	this.paymentDate = paymentDate;
-}
-
-/**
- * @return the amount
- */
-public Double getAmount() {
-	return amount;
-}
-
-/**
- * @param amount the amount to set
- */
-public void setAmount(Double amount) {
-	this.amount = amount;
-}
-
-/**
- * @return the customers
- */
-public Customers getCustomers() {
-	return customers;
-}
-
-/**
- * @param customers the customers to set
- */
-public void setCustomers(Customers customers) {
-	this.customers = customers;
-}
-
-/**
- * @param checkNumber
- * @param paymentDate
- * @param amount
- * @param customers
- */
-public Payment(String checkNumber, Date paymentDate, Double amount, Customers customers) {
+public Payment(String checkNumber, Date paymentDate, Double amount, Customers customers) { 
 	super();
 	this.checkNumber = checkNumber;
 	this.paymentDate = paymentDate;
 	this.amount = amount;
 	this.customers = customers;
 }
+//<<<<------------Metodos accesores GETTERsy SETTERs
+/**metodo accesor getter muestra lo q contiene la variable miembro
+ * @return retorna checkNumber
+ */
+public String getCheckNumber() {
+	return checkNumber;
+}
+
+/**metodo accesor setter introduce datos a la variable miembro 
+ * @param checkNumber tipo String
+ */
+public void setCheckNumber(String checkNumber) {
+	this.checkNumber = checkNumber;
+}
+
+/**
+ * @return retornala variable miembro paymentDate
+ */
+public Date getPaymentDate() {
+	return paymentDate;
+}
+
+/**
+ * @param paymentDate tipo de dato Date
+ */
+public void setPaymentDate(Date paymentDate) {
+	this.paymentDate = paymentDate;
+}
+
+/**
+ * @return retornala variable miembro amount
+ */
+public Double getAmount() {
+	return amount;
+}
+
+/**
+ * @param amount tipo Double
+ */
+public void setAmount(Double amount) {
+	this.amount = amount;
+}
+
+/**
+ * @return retornala variable miembro customers
+ */
+public Customers getCustomers() {
+	return customers;
+}
+
+/**
+ * @param customers tipo Customer
+ */
+public void setCustomers(Customers customers) {
+	this.customers = customers;
+}
+
+
 
 	
 }
