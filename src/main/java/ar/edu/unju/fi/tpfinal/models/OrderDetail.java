@@ -38,10 +38,11 @@ public class OrderDetail implements Serializable{
 	private int quantityOrdered;
 	@Column
 	@NotNull(message = "El campo princeEach no puede estar vacio")
+	@Min(value=1,message="minimo 1 digito")
 	private double princeEach;
 	@Column
 	@NotNull(message = "Debes introducir orderLineNumber")
-	@Min(value=2,message="minimo 2 digito")
+	@Min(value=1,message="minimo 1 digito")
 	private int orderLineNumber;
 	
 //CONSTRUCTORES

@@ -84,7 +84,6 @@ public class Customers {
 	@Autowired
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="salesRepEmployeeNumber")
-	@Valid
 	private Employee employee;
 	
 	

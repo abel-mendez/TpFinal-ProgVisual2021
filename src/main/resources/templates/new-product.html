@@ -55,17 +55,17 @@
           </div>
           <div class="col-md-4">
             <label for="quantityInStock" class="form-label">Quantity in Stock</label>
-            <input th:field="*{quantityInStock}" type="text" class="form-control" id="quantityInStock" />
+            <input th:field="*{quantityInStock}" type="number" class="form-control" id="quantityInStock" />
             <div class=" alert alert-danger" th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}" ></div>
           </div>
           <div class="col-md-4">
             <label for="buyPrice" class="form-label">Buy Price</label>
-          	 <input th:field="*{buyPrice}" type="text" class="form-control" id="buyPrice" />
+          	 <input th:field="*{buyPrice}" type="number" class="form-control" id="buyPrice" />
           	 <div class=" alert alert-danger" th:if="${#fields.hasErrors('buyPrice')}" th:errors="*{buyPrice}" ></div>
           </div>
           <div class="col-md-4">
             <label for="msrp" class="form-label">MSRP</label>
-            <input th:field="*{msrp}" type="text" class="form-control" id="msrp" />
+            <input th:field="*{msrp}" type="number" class="form-control" id="msrp" />
             <div class=" alert alert-danger" th:if="${#fields.hasErrors('msrp')}" th:errors="*{msrp}" ></div>
           </div>
            <!-- Select Product Line -->

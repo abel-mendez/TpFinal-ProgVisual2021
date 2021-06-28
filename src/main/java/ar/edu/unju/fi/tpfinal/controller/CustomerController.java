@@ -29,12 +29,20 @@ import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 @Controller
 public class CustomerController {
 	
+	
 	@Autowired
 	private ICustomersService customerService;
 	private static final Log LOGGER=LogFactory.getLog(CustomerController.class);
 	@Autowired
 	private IEmployeeService employeeService;
 	
+
+
+	@GetMapping("/error")
+	public String errorMapping() {
+		return "index";
+	}
+
 	/**
 	 * Metodo que nos permite mostrar el formulario para ingresar un nuevo Customers
 	 * donde por medio del controller mostramos el template new-customer.html
@@ -70,7 +78,7 @@ public class CustomerController {
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-customer.html");
 			ModelAndView modelVi= new ModelAndView("new-customer");
 			modelVi.addObject("customer", unCustomer);
-			modelVi.addObject("employees",customerService.getAllCustomers());
+			modelVi.addObject("employees",employeeService.getAllEmployees());
 			return modelVi;
 		}else {
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA all-customer.html");

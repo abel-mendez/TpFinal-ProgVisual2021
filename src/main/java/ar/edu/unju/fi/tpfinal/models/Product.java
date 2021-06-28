@@ -37,11 +37,9 @@ public class Product {
 	@Autowired
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="productline")
-	@Valid
 	private ProductLine productLine;
 	@Column
 	@NotEmpty(message="Debes ingresar productScale")
-	@Size(min = 3,max = 30, message="Minimo 3 y Maximo 30 caracteres")
 	private String productScale;
 	@Column
 	@NotEmpty(message="Debes ingresar productVendor")
@@ -57,9 +55,11 @@ public class Product {
 	private int quantityInStock;
 	@Column
 	@NotNull(message = "El campo buyPrice no puede estar vacio")
+	@Min(value=1,message="minimo 1 digito")
 	private double buyPrice;
 	@Column
 	@NotNull(message = "El campo msrp no puede estar vacio")
+	@Min(value=1,message="minimo 1 digito")
 	private double msrp;
 	//CONSTRUCTORES
 	/**

@@ -111,7 +111,7 @@ public class EmployeeControlles {
 		user.setPassword(password);
 		user.setTipo(tipo);
 
-	
+		oneEmployee.setUser(user);
 		if (result.hasErrors()){
 			LOGGER.info("RESULT : VALIDACION");
 			LOGGER.info("RESULT : VISUALIZA LA PAGINA new-employee.html");

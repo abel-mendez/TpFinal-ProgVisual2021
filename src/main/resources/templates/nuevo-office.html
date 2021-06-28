@@ -25,18 +25,24 @@
         <div class="col-md-3">
             <label for="officeCode" class="form-label">Office Code</label>
             <input th:field="*{officeCode}" type="text" class="form-control" id="officeCoe" />
+            
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('officeCode')}" th:errors="*{officeCode}" ></div>
+            
           </div>
           <div class="col-md-3">
             <label for="country" class="form-label">Country</label>
             <input th:field="*{country}" type="text" class="form-control" id="country" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}" ></div>
           </div>
           <div class="col-md-3">
             <label for="territory" class="form-label">Territory</label>
             <input th:field="*{territory}" type="text" class="form-control" id="territory" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('territory')}" th:errors="*{territory}" ></div>
           </div>
           <div class="col-md-3">
             <label for="phone" class="form-label">Phone</label>
             <input th:field="*{phone}" type="text" class="form-control" id="phone" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" ></div>
           </div>
           <div class="col-12">
             <label for="addressLine1" class="form-label">Address Line 1</label>
@@ -47,6 +53,7 @@
               id="addressLine1"
               placeholder="1234 Main St"
             />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('addressLine1')}" th:errors="*{addressLine1}" ></div>
           </div>
           <div class="col-12">
             <label for="addressLine2" class="form-label">Address Line 2</label>
@@ -57,18 +64,22 @@
               id="addressLine2"
               placeholder="Apartment, studio, or floor"
             />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('addressLine2')}" th:errors="*{addressLine2}" ></div>
           </div>
           <div class="col-md-6">
             <label for="city" class="form-label">City</label>
             <input th:field="*{city}" type="text" class="form-control" id="city" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}" ></div>
           </div>
           <div class="col-md-4">
             <label for="state" class="form-label">State</label>
           	 <input th:field="*{state}" type="text" class="form-control" id="state" />
+          	 <div class=" alert alert-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}" ></div>
           </div>
           <div class="col-md-2">
             <label for="postalCode" class="form-label">Postal Code</label>
             <input th:field="*{postalCode}" type="text" class="form-control" id="postalCode" />
+            <div class=" alert alert-danger" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" ></div>
           </div>
           <div class="col-12">
             <button type="submit" class="btn mt-2 btn-primary">
