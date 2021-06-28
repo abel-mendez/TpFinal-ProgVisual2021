@@ -22,7 +22,7 @@ public interface IEmployeeService {
 	public List<Employee> getAllEmployees();
 	/**
 	 * Metodo que Obtiene un Employee
-	 * @return retorna la lista de Employees
+	 * @return retorna un Employee vacio
 	 */
 	public Employee getEmployee();
 	/**

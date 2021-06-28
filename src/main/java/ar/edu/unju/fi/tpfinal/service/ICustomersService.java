@@ -23,7 +23,7 @@ public interface ICustomersService {
 	public List<Customers> getAllCustomers();
 	/**
 	 * Metodo que Obtiene un Customer
-	 * @return retorna la lista de Customer
+	 * @return retorna un Customer vacio
 	 */
 	public Customers getCustomer();
 	/**
